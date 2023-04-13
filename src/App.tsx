@@ -24,7 +24,7 @@ function App() {
         </a> */}
       </div>
       <h1>Vite + React + TS + Styled Components</h1>     
-      <Button text={'Essai props'} btnColor={'yellow'} btnBgColor={'midnightblue'} fontSize={'1.2rem'} />  
+      <Button text={'Essai props'} btnColor={'pink'} btnBgColor={'midnightblue'} fontSize={'1.2rem'} />  
     </div>
   )
 }
