@@ -14,3 +14,4 @@ A user should be able to:
 - [ ] Choose the number of employees displayed per page (10, 25, 50, 100)
 - [ ] Do a job search with by entering their name in the search field
 - [ ] Click on the previous or next page to access to any page listing employees
+- [ ] Click on the up or down arrow in the header of a column to change the order in which employees are displayed (imported from existing library)
