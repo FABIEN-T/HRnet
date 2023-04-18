@@ -23,6 +23,7 @@ h2 {
 
 .inputNameError {
   color: red;
+  font-weight: bold;
   width: fit-content;
   height: 20px;
   /* margin-bottom: -16px; */
@@ -30,6 +31,33 @@ h2 {
 
 p {
   margin: 0;
+}
+
+/* .pErrorName {
+  color: red;
+  font-weight: bold;
+} */
+
+.frame {
+  position: relative;
+  margin-top: 30px;
+}
+
+.pAddress {
+  position: absolute;
+  width: fit-content;
+  font-weight: bold;
+  margin-top: -10px;
+  padding: 0 4px;
+  background-color: rgb(255, 255, 255);
+}
+
+.address {
+  border: 2px green solid;
+  border-radius: 5px;
+  /* margin-top: -8px; */
+  margin-left: -8px;
+  padding: 8px;
 }
 
 /* #root {
