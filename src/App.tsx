@@ -14,8 +14,8 @@ function App() {
         btnBgColor={'midnightblue'}
         fontSize={'1.2rem'}
       /> */}
-      {/* <Form /> */}
-      <Example />
+      <Form />
+      {/* <Example /> */}
     </div>
   )
 }
