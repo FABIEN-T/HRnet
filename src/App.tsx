@@ -1,9 +1,11 @@
+// @ts-nocheck
+
 import { useState } from 'react'
 import viteLogo from '/vite.svg'
 import './App.css'
 // import { Button } from 'fv_vite-react-ts-prop-button'
 import Form from './components/Form'
-import Account from './components/Account'
+import SelectRequired from './components/SelectRequired'
 
 function App() {
   return (
@@ -15,7 +17,7 @@ function App() {
         fontSize={'1.2rem'}
       /> */}
       <Form />
-      {/* <Account /> */}
+      {/* <SelectRequired /> */}
     </div>
   )
 }

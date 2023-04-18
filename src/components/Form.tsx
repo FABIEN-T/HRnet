@@ -5,6 +5,7 @@ import { useForm, Controller } from 'react-hook-form'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import MySelect from './MySelect'
+import Select from 'react-select'
 import { labelDepartement, labelStates } from '../datasSelect/selectLabel'
 
 import '../App.css'
@@ -38,7 +39,7 @@ export default function Form() {
       <form id="external-form">
         <div className="inputName-wrapper inputName-wrapper-column">
           <div className="inputContainer">
-            <label htmlFor="firstName">Last Name</label>
+            <label htmlFor="firstName">First Name</label>
             <input
               name="firstName"
               // placeholder="enter your firstname"
@@ -112,7 +113,7 @@ export default function Form() {
             />
             <div className="inputNameError">
               {errors?.dateBirth?.type === 'required' && (
-                <p className="pErrorName pLastName">This field is required</p>
+                <p className="pErrorName">This field is required</p>
               )}
             </div>
           </section>
@@ -140,7 +141,7 @@ export default function Form() {
             />
             <div className="inputNameError">
               {errors?.dateStart?.type === 'required' && (
-                <p className="pErrorName pLastName">This field is required</p>
+                <p className="pErrorName">This field is required</p>
               )}
             </div>
           </section>
@@ -194,8 +195,27 @@ export default function Form() {
                 </div>
               </div>
               <div className="inputContainer">
-                <label htmlFor="state">State</label>
-                <MySelect options={labelStates} />
+                <label htmlFor="selectState">State</label>
+                <Controller
+                  control={control}
+                  name="selectState"
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <Select
+                      className="input"
+                      name="selectState"
+                      defaultValue={null}
+                      selected={field.value}
+                      onChange={field.onChange}
+                      options={labelStates}
+                    />
+                  )}
+                />
+                <div className="inputNameError">
+                  {errors?.selectState?.type === 'required' && (
+                    <p className="pErrorName">This field is required</p>
+                  )}
+                </div>
               </div>
               <div className="inputContainer">
                 <label htmlFor="zipcode">Zip Code</label>
@@ -217,21 +237,34 @@ export default function Form() {
                 </div>
               </div>
             </div>
+            {/* <div className="inputContainer">
+              <label htmlFor="state">Departement</label>
+              <MySelect options={labelDepartement} />              
+            </div> */}
             <div className="inputContainer">
-              <label htmlFor="state">State</label>
-              <MySelect options={labelDepartement} />
+              <label htmlFor="selectDepartement">Departement</label>
+              <Controller
+                control={control}
+                name="selectDepartement"
+                rules={{ required: true }}
+                render={({ field }) => (
+                  <Select
+                    className="input"
+                    name="selectDepartement"
+                    defaultValue={null}
+                    selected={field.value}
+                    onChange={field.onChange}
+                    options={labelDepartement}
+                  />
+                )}
+              />
+              <div className="inputNameError">
+                {errors?.selectDepartement?.type === 'required' && (
+                  <p className="pErrorName">This field is required</p>
+                )}
+              </div>
             </div>
           </div>
-          {/* <div className="inputContainer">
-            <label htmlFor="department">Department</label>
-            <MySelect options={labelDepartement} />
-            <select {...register('labelDepartement', { required: true })}>
-              <option value="">Select...</option>
-              <option value="Sales">Sales</option>
-              <option value="  Marketing"> Marketing</option>
-              <option value=" Engineering"> Engineering</option>
-            </select>
-          </div> */}
         </div>
 
         <div className="inputName-wrapper">
@@ -242,4 +275,17 @@ export default function Form() {
       </form>
     </>
   )
+}
+
+{
+  /* <div className="inputContainer">
+            <label htmlFor="department">Department</label>
+            <MySelect options={labelDepartement} />
+            <select {...register('labelDepartement', { required: true })}>
+              <option value="">Select...</option>
+              <option value="Sales">Sales</option>
+              <option value="  Marketing"> Marketing</option>
+              <option value=" Engineering"> Engineering</option>
+            </select>
+          </div> */
 }

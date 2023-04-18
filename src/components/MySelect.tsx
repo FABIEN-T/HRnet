@@ -23,7 +23,7 @@ export default function MySelect({ options }) {
   const [selectedOption, setSelectedOption] = useState(null)
 
   return (
-    <div className="App">
+    <div>
       <Select
         defaultValue={selectedOption}
         onChange={setSelectedOption}
