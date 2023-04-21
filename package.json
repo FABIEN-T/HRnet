@@ -18,7 +18,7 @@
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react-swc": "^3.2.0",
     "eslint": "^8.37.0",
-    "fv-modal-react": "^0.0.1",
+    "fv-modal-react": "^0.0.2",
     "prettier": "^2.8.7",
     "react-datepicker": "^4.11.0",
     "react-hook-form": "^7.43.9",

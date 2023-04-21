@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "noImplicitAny": false,
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": [
@@ -19,9 +20,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "typeRoots": [
-      "./typings/index.d.ts",
-    ],
+    "declaration": false,
   },
   "include": [
     "src"
@@ -31,5 +30,4 @@
       "path": "./tsconfig.node.json"
     }
   ],
-  "noImplicitAny": false
 }
