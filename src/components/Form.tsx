@@ -1,19 +1,22 @@
 // @ts-nocheck
 
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import MySelect from './MySelect'
 import Select from 'react-select'
 import { labelDepartement, labelStates } from '../datasSelect/selectLabel'
+
+import { Modal } from 'fv-modal-react'
+import '../../node_modules/fv-modal-react/dist/style.css'
 
 import '../App.css'
 
 export default function Form() {
   // récupération des élements du state
-  const [dateStart, setDateStart] = useState(null)
-  const [dateBirth, setDateBirth] = useState(null)
+  // const [dateStart, setDateStart] = useState(null)
+  // const [dateBirth, setDateBirth] = useState(null)
+  const [isOpen, setIsOpen] = useState(false)
 
   const {
     register,
@@ -24,25 +27,25 @@ export default function Form() {
   } = useForm({ mode: 'all' })
 
   const save = (data) => {
+    setIsOpen(true)
+    localStorage.setItem('employee', JSON.stringify(data))
     console.log(
       data
       // data.dateBirth ? data.dateBirth.toLocaleDateString() : null,
-      // data.dateBirth ? data.dateBirth.getMonth() : null,
-      // data.dateBirth ? data.dateBirth.getFullYear() : null
     )
   }
 
   return (
-    <>
+    <div className="createEmployee">
+      {/* <div> */}
       <h1>HRnet</h1>
       <h2>Create Employee</h2>
       <form id="external-form">
-        <div className="inputName-wrapper inputName-wrapper-column">
+        <div className="inputName-wrapper">
           <div className="inputContainer">
             <label htmlFor="firstName">First Name</label>
             <input
               name="firstName"
-              // placeholder="enter your firstname"
               {...register('firstName', {
                 required: true,
                 maxLength: 20,
@@ -65,7 +68,6 @@ export default function Form() {
             <label htmlFor="lastName">Last Name</label>
             <input
               name="lastName"
-              // placeholder="enter your lastname"
               {...register('lastName', {
                 required: true,
                 maxLength: 20,
@@ -152,11 +154,10 @@ export default function Form() {
                 <label htmlFor="street">Street</label>
                 <input
                   name="street"
-                  // placeholder="enter your firstname"
                   {...register('street', {
                     required: true,
                     maxLength: 60,
-                    // pattern: /^[a-zA-Z\s\-À-ÖØ-öø-ÿ']+$/g,
+                    pattern: /^[a-zA-Z\s\-À-ÖØ-öø-ÿ'0-9,]+$/g,
                   })}
                 />
                 <div className="inputNameError">
@@ -166,16 +167,15 @@ export default function Form() {
                   {/* {errors?.street?.type === 'maxLength' && (
                   <p className="pErrorName">Cannot exceed 60 characters</p>
                 )} */}
-                  {/* {errors?.firstName?.type === 'pattern' && (
-                  <p className="pErrorName">Alphabetical characters only</p>
-                )} */}
+                  {errors?.street?.type === 'pattern' && (
+                    <p className="pErrorName">Alphabetical characters only</p>
+                  )}
                 </div>
               </div>
               <div className="inputContainer">
                 <label htmlFor="city">City</label>
                 <input
                   name="city"
-                  // placeholder="enter your firstname"
                   {...register('city', {
                     required: true,
                     maxLength: 30,
@@ -224,68 +224,54 @@ export default function Form() {
                   type="number"
                   {...register('zipcode', {
                     required: true,
-                    // max: 5,
-                    // min: 5,
-                    pattern: /^(0|[1-9]\d*)(\.\d+)?$/i,
-                    // validate: (value) => value > 0,
+                    pattern:
+                      /^((\d{5}-\d{4})|(\d{5})|([A-Z]\d[A-Z]\s\d[A-Z]\d))$/g,
                   })}
                 />
                 <div className="inputNameError">
                   {errors?.zipcode?.type === 'required' && (
                     <p className="pErrorName">This field is required</p>
                   )}
+                  {errors?.zipcode?.type === 'pattern' && (
+                    <p className="pErrorName">5 digits are required</p>
+                  )}
                 </div>
               </div>
             </div>
-            {/* <div className="inputContainer">
-              <label htmlFor="state">Departement</label>
-              <MySelect options={labelDepartement} />              
-            </div> */}
-            <div className="inputContainer">
-              <label htmlFor="selectDepartement">Departement</label>
-              <Controller
-                control={control}
-                name="selectDepartement"
-                rules={{ required: true }}
-                render={({ field }) => (
-                  <Select
-                    className="input"
-                    name="selectDepartement"
-                    defaultValue={null}
-                    selected={field.value}
-                    onChange={field.onChange}
-                    options={labelDepartement}
-                  />
-                )}
-              />
-              <div className="inputNameError">
-                {errors?.selectDepartement?.type === 'required' && (
-                  <p className="pErrorName">This field is required</p>
-                )}
-              </div>
+          </div>
+          <div className="inputContainer">
+            <label htmlFor="selectDepartement">Departement</label>
+            <Controller
+              control={control}
+              name="selectDepartement"
+              rules={{ required: true }}
+              render={({ field }) => (
+                <Select
+                  className="input"
+                  name="selectDepartement"
+                  defaultValue={null}
+                  selected={field.value}
+                  onChange={field.onChange}
+                  options={labelDepartement}
+                />
+              )}
+            />
+            <div className="inputNameError">
+              {errors?.selectDepartement?.type === 'required' && (
+                <p className="pErrorName">This field is required</p>
+              )}
             </div>
           </div>
         </div>
 
-        <div className="inputName-wrapper">
+        <div className="buttonDiv">
           <button className="edit-button" onClick={handleSubmit(save)}>
             Save
           </button>
         </div>
       </form>
-    </>
+      {/* </div> */}
+      {isOpen && <Modal setIsOpen={setIsOpen} />}
+    </div>
   )
-}
-
-{
-  /* <div className="inputContainer">
-            <label htmlFor="department">Department</label>
-            <MySelect options={labelDepartement} />
-            <select {...register('labelDepartement', { required: true })}>
-              <option value="">Select...</option>
-              <option value="Sales">Sales</option>
-              <option value="  Marketing"> Marketing</option>
-              <option value=" Engineering"> Engineering</option>
-            </select>
-          </div> */
 }
