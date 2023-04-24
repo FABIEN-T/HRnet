@@ -23,6 +23,8 @@ const nameNumberRegex = new RegExp(
 
 const provifirstname = 'Louis '
 const provilastName = 'Douze '
+let tempFirstName = ''
+let tempLastName = ''
 
 export default function Form() {
   // récupération des élements du state
@@ -41,10 +43,12 @@ export default function Form() {
   } = useForm({ mode: 'all' })
 
   const save = (data) => {
+    tempFirstName = data.firstName
+    tempLastName = data.lastName
     setIsOpen(true)
     localStorage.setItem('employee', data)
     console.log(
-      data
+      data.firstName
       // data.dateBirth ? data.dateBirth.toLocaleDateString() : null,
     )
   }
@@ -291,7 +295,7 @@ export default function Form() {
       {isOpen && (
         <Modal
           setIsOpen={setIsOpen}
-          text={provifirstname + provilastName + 'is saved'}
+          text={tempFirstName + ' ' + tempLastName + ' is saved.'}
           modalBgColor={'blue'}
           modalBorder={'3px solid white'}
           modalBorderRadius={'20px'}
