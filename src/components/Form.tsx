@@ -7,16 +7,30 @@ import 'react-datepicker/dist/react-datepicker.css'
 import Select from 'react-select'
 import { labelDepartement, labelStates } from '../datasSelect/selectLabel'
 
+// import NameNumberField from './fields/NameNumberField'
+
 import { Modal } from 'fv-modal-react'
-import '../../node_modules/fv-modal-react/dist/style.css'
+// import '../../node_modules/fv-modal-react/dist/style.css'
+// import 'fv-modal-react/dist/style.css'
 
 import '../App.css'
+
+const nameRegex = new RegExp(/^[a-zA-Zs-À-ÖØ-öø-ÿ']+$/g)
+const numberRegex = new RegExp(/^[a-zA-Zs-À-ÖØ-öø-ÿ'0-9,]+$/g)
+const nameNumberRegex = new RegExp(
+  /^((d{5}-d{4})|(d{5})|([A-Z]d[A-Z]sd[A-Z]d))$/g
+)
+
+const provifirstname = 'Louis '
+const provilastName = 'Douze '
 
 export default function Form() {
   // récupération des élements du state
   // const [dateStart, setDateStart] = useState(null)
   // const [dateBirth, setDateBirth] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
+
+  // console.log('regex', nameNumberRegex)
 
   const {
     register,
@@ -169,7 +183,7 @@ export default function Form() {
                   <p className="pErrorName">Cannot exceed 60 characters</p>
                 )} */}
                     {errors?.street?.type === 'pattern' && (
-                      <p className="pErrorName">Alphabetical characters only</p>
+                      <p className="pErrorName">Alphabetical, numbers only</p>
                     )}
                   </div>
                 </div>
@@ -273,7 +287,23 @@ export default function Form() {
         </form>
         {/* </div> */}
       </div>
-      {isOpen && <Modal setIsOpen={setIsOpen} />}
+      {/* <NameNumberField typeField={'firstName'} label={'Prénom'} /> */}
+      {isOpen && (
+        <Modal
+          setIsOpen={setIsOpen}
+          text={provifirstname + provilastName + 'is saved'}
+          modalBgColor={'blue'}
+          modalBorder={'3px solid white'}
+          modalBorderRadius={'20px'}
+          crossCloseBg={'red'}
+          crossCloseColor={'white'}
+          crossCloseBorder={'3px solid white'}
+          fontFamily={'Trebuchet MS'}
+          fontSize={'20px'}
+          fontColor={'white'}
+          textAlign={'left'}
+        />
+      )}
     </>
   )
 }
