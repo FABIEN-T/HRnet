@@ -45,12 +45,23 @@ export default function Form() {
   const save = (data) => {
     tempFirstName = data.firstName
     tempLastName = data.lastName
+
     setIsOpen(true)
-    localStorage.setItem('employee', data)
-    console.log(
-      data.firstName
-      // data.dateBirth ? data.dateBirth.toLocaleDateString() : null,
-    )
+    const employees = JSON.parse(localStorage.getItem('employees')) || []
+    const employee = {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      startDate: data.dateStart.toLocaleDateString(),
+      department: data.selectDepartement.value,
+      dateOfBirth: data.dateBirth.toLocaleDateString(),
+      street: data.street,
+      city: data.city,
+      state: data.selectState.abbreviation,
+      zipCode: data.dateBirth.toLocaleDateString(),
+    }
+    console.log(employees)
+    employees.push(employee)
+    localStorage.setItem('employees', JSON.stringify(employees))
   }
 
   return (
@@ -66,13 +77,22 @@ export default function Form() {
               <input
                 name="firstName"
                 {...register('firstName', {
-                  required: true,
-                  maxLength: 20,
-                  pattern: /^[a-zA-Z\s\-À-ÖØ-öø-ÿ']+$/g,
+                  required: 'This field is required',
+                  // maxLength: 20,
+                  maxLength: {
+                    value: 20,
+                    message: 'Max length is 20',
+                  },
+                  // pattern: /^[a-zA-Z\s\-À-ÖØ-öø-ÿ']+$/g,
+                  pattern: {
+                    value: /^[a-zA-Z\s\-À-ÖØ-öø-ÿ']+$/g,
+                    message: 'Alphabetical characters only',
+                  },
                 })}
               />
               <div className="inputNameError">
-                {errors?.firstName?.type === 'required' && (
+                {errors?.firstName && <p>{errors.firstName.message}</p>}
+                {/* {errors?.firstName?.type === 'required' && (
                   <p className="pErrorName">This field is required</p>
                 )}
                 {errors?.firstName?.type === 'maxLength' && (
@@ -80,7 +100,7 @@ export default function Form() {
                 )}
                 {errors?.firstName?.type === 'pattern' && (
                   <p className="pErrorName">Alphabetical characters only</p>
-                )}
+                )} */}
               </div>
             </div>
             <div className="inputContainer">
@@ -166,9 +186,12 @@ export default function Form() {
                 )}
               </div>
             </section>
-            <div className="frame">
-              <p className="pAddress">Address</p>
-              <div className="address">
+            {/* <div className="frame"> */}
+            <fieldset>
+              <legend> Address </legend>
+              {/* <p className="pAddress">Address</p> */}
+              {/* <div className="address"> */}
+              <div>
                 <div className="inputContainer">
                   <label htmlFor="street">Street</label>
                   <input
@@ -237,27 +260,28 @@ export default function Form() {
                   </div>
                 </div>
                 <div className="inputContainer">
-                  <label htmlFor="zipcode">Zip Code</label>
+                  <label htmlFor="zipCode">Zip Code</label>
                   <input
-                    name="zipcode"
+                    name="zipCode"
                     type="number"
-                    {...register('zipcode', {
+                    {...register('zipCode', {
                       required: true,
                       pattern:
                         /^((\d{5}-\d{4})|(\d{5})|([A-Z]\d[A-Z]\s\d[A-Z]\d))$/g,
                     })}
                   />
                   <div className="inputNameError">
-                    {errors?.zipcode?.type === 'required' && (
+                    {errors?.zipCode?.type === 'required' && (
                       <p className="pErrorName">This field is required</p>
                     )}
-                    {errors?.zipcode?.type === 'pattern' && (
+                    {errors?.zipCode?.type === 'pattern' && (
                       <p className="pErrorName">5 digits are required</p>
                     )}
                   </div>
                 </div>
               </div>
-            </div>
+            </fieldset>
+            {/* </div> */}
             <div className="inputContainer">
               <label htmlFor="selectDepartement">Departement</label>
               <Controller

@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import { useForm } from 'react-hook-form'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 
 // const regexPattern = {
 //   nameRegex: /^[a-zA-Z\s\-À-ÖØ-öø-ÿ']+$/g,
@@ -29,7 +29,18 @@ export default function NameNumberField({ typeField, label }) {
           }
         )}
       />
-      {/* <div className="inputNameError">
+    </div>
+  )
+}
+
+// NameNumberField.propTypes = {
+//   typeField: PropTypes.string,
+//   label: PropTypes.string,
+//   typeRegex: PropTypes.instanceOf(RegExp),
+// }
+
+{
+  /* <div className="inputNameError">
         {(errors?.firstName?.type ||
           errors?.lastName?.type ||
           errors?.street?.type ||
@@ -49,13 +60,5 @@ export default function NameNumberField({ typeField, label }) {
         {errors?.street?.type === 'pattern' && (
           <p className="pErrorName">Alphabetical characters only</p>
         )}
-      </div> */}
-    </div>
-  )
-}
-
-NameNumberField.propTypes = {
-  typeField: PropTypes.string,
-  label: PropTypes.string,
-  typeRegex: PropTypes.instanceOf(RegExp),
+      </div> */
 }
