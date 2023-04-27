@@ -6,7 +6,7 @@ export default function Header() {
     <>
       <div className="logoTitle">
         <img src={logo} alt="Logo-Wealth-Health" />
-        <h1>HRnet</h1>
+        <h1 className="h1Header">HRnet</h1>
       </div>
 
       <Link to="/employee-list" className="linkCurrentEmployees">

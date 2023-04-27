@@ -26,7 +26,7 @@ img {
   height: 120px;
 }
 
-h1 {
+.h1Header {
   color: #576c05;
   margin: 0 0 1px;
   font-stretch: expanded;
@@ -123,11 +123,12 @@ legend {
   cursor: pointer;
   padding: 5px 30px;
   color: white;
-  background-color: #6e8510;
+  background-color: #576c05;
   border-radius: 10px;
   border: 3px solid #576c05;
 }
 
 .edit-button:hover {
+  color: white;
   background-color: #93ad18;
 }

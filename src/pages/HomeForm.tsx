@@ -104,15 +104,15 @@ export default function HomeForm() {
           <Modal
             setIsOpen={setIsOpen}
             text={tempFirstName + ' ' + tempLastName + ' is saved.'}
-            modalBgColor={'#f2f6e8'}
-            modalBorder={'3px solid #576c05'}
+            modalBgColor={'#576c05'}
+            modalBorder={'3px solid white'}
             modalBorderRadius={'20px'}
-            crossCloseBg={'#f2f6e8'}
-            crossCloseColor={'#576c05'}
-            crossCloseBorder={'3px solid #576c05'}
+            crossCloseBg={'#576c05'}
+            crossCloseColor={'white'}
+            crossCloseBorder={'3px solid white'}
             fontFamily={'Trebuchet MS'}
             fontSize={'20px'}
-            fontColor={''}
+            fontColor={'white'}
             textAlign={'left'}
           />
         )}
