@@ -11,8 +11,11 @@ function SelectDepartement() {
     formState: { errors },
   } = useFormContext() // retrieve hook methods
   return (
-    <div className="inputContainer">
-      <label htmlFor="selectDepartement">Departement</label>
+    <div className="inputContainer inputPadding">
+      <div className="labelError">
+        <label htmlFor="selectDepartement">Departement</label>
+        <p className="inputError">{errors.selectDepartement?.message}</p>
+      </div>
       <Controller
         control={control}
         name="selectDepartement"
@@ -28,9 +31,6 @@ function SelectDepartement() {
           />
         )}
       />
-      <div className="inputNameError">
-        <p className="error">{errors.selectDepartement?.message}</p>
-      </div>
     </div>
   )
 }

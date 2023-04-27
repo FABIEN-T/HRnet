@@ -10,7 +10,10 @@ function Street() {
 
   return (
     <div className="inputContainer">
-      <label htmlFor="street">Street</label>
+      <div className="labelError">
+        <label htmlFor="street">Street</label>
+        <p className="inputError">{errors.street?.message}</p>
+      </div>
       <input
         name="street"
         {...register('street', {
@@ -22,9 +25,6 @@ function Street() {
           },
         })}
       />
-      <div className="inputNameError">
-        <p className="error">{errors.street?.message}</p>
-      </div>
     </div>
   )
 }

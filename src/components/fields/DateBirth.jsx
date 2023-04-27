@@ -10,15 +10,18 @@ function DateBirth() {
     formState: { errors },
   } = useFormContext() // retrieve hook methods
   return (
-    <div className="inputContainer">
-      <label htmlFor="dateBirth">Date of Birth</label>
+    <div className="inputContainer inputPadding">
+      <div className="labelError">
+        <label htmlFor="dateBirth">Date of Birth</label>
+        <p className="inputError">{errors?.dateBirth?.message}</p>
+      </div>
       <Controller
         control={control}
         name="dateBirth"
         rules={{ required: 'This field is required' }}
         render={({ field }) => (
           <DatePicker
-            className="input"
+            className="inputDate"
             name="dateBirth"
             selected={field.value}
             dateFormat="MM/dd/yyyy"
@@ -32,9 +35,6 @@ function DateBirth() {
           />
         )}
       />
-      <div className="inputNameError">
-        <p className="pErrorName">{errors?.dateBirth?.message}</p>
-      </div>
     </div>
   )
 }

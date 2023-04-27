@@ -11,7 +11,11 @@ function SelectState() {
   } = useFormContext() // retrieve hook methods
   return (
     <div className="inputContainer">
-      <label htmlFor="selectState">State</label>
+      <div className="labelError">
+        <label htmlFor="selectState">State</label>
+        <p className="inputError">{errors?.selectState?.message}</p>
+      </div>
+
       <Controller
         control={control}
         name="selectState"
@@ -27,9 +31,6 @@ function SelectState() {
           />
         )}
       />
-      <div className="inputNameError">
-        <p className="error">{errors?.selectState?.message}</p>
-      </div>
     </div>
   )
 }

@@ -10,7 +10,13 @@ function City() {
 
   return (
     <div className="inputContainer">
-      <label>City</label>
+      <div className="labelError">
+        <label>City</label>
+        <div className="inputError">
+          <p className="error">{errors.city?.message}</p>
+        </div>
+      </div>
+
       <input
         {...register('city', {
           minLength: { value: 2, message: '2<Length<30' },
@@ -22,9 +28,6 @@ function City() {
           },
         })}
       />
-      <div className="inputNameError">
-        <p className="error">{errors.city?.message}</p>
-      </div>
     </div>
   )
 }

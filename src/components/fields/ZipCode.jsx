@@ -10,7 +10,11 @@ function ZipCode() {
 
   return (
     <div className="inputContainer">
-      <label htmlFor="zipcode">Zip Code</label>
+      <div className="labelError">
+        <label htmlFor="zipcode">Zip Code</label>
+        <p className="inputError">{errors.zipcode?.message}</p>
+      </div>
+
       <input
         name="street"
         {...register('zipcode', {
@@ -21,9 +25,6 @@ function ZipCode() {
           },
         })}
       />
-      <div className="inputNameError">
-        <p className="error">{errors.zipcode?.message}</p>
-      </div>
     </div>
   )
 }

@@ -70,7 +70,7 @@ export default function Form() {
         {/* <div> */}
         <h1>HRnet</h1>
         <h2>Create Employee</h2>
-        <form id="external-form">
+        <form>
           <div className="inputName-wrapper">
             <div className="inputContainer">
               <label htmlFor="firstName">First Name</label>
@@ -90,7 +90,7 @@ export default function Form() {
                   },
                 })}
               />
-              <div className="inputNameError">
+              <div className="inputError">
                 {errors?.firstName && <p>{errors.firstName.message}</p>}
                 {/* {errors?.firstName?.type === 'required' && (
                   <p className="pErrorName">This field is required</p>
@@ -113,7 +113,7 @@ export default function Form() {
                   pattern: /^[a-zA-Z\s\-À-ÖØ-öø-ÿ']+$/g,
                 })}
               />
-              <div className="inputNameError">
+              <div className="inputError">
                 {errors?.lastName?.type === 'required' && (
                   <p className="pErrorName pLastName">This field is required</p>
                 )}
@@ -152,7 +152,7 @@ export default function Form() {
                   />
                 )}
               />
-              <div className="inputNameError">
+              <div className="inputError">
                 {errors?.dateBirth?.type === 'required' && (
                   <p className="pErrorName">This field is required</p>
                 )}
@@ -180,7 +180,7 @@ export default function Form() {
                   />
                 )}
               />
-              <div className="inputNameError">
+              <div className="inputError">
                 {errors?.dateStart?.type === 'required' && (
                   <p className="pErrorName">This field is required</p>
                 )}
@@ -202,7 +202,7 @@ export default function Form() {
                       pattern: /^[a-zA-Z\s\-À-ÖØ-öø-ÿ'0-9,]+$/g,
                     })}
                   />
-                  <div className="inputNameError">
+                  <div className="inputError">
                     {errors?.street?.type === 'required' && (
                       <p className="pErrorName">This field is required</p>
                     )}
@@ -224,7 +224,7 @@ export default function Form() {
                       pattern: /^[a-zA-Z\s\-À-ÖØ-öø-ÿ']+$/g,
                     })}
                   />
-                  <div className="inputNameError">
+                  <div className="inputError">
                     {errors?.city?.type === 'required' && (
                       <p className="pErrorName">This field is required</p>
                     )}
@@ -253,7 +253,7 @@ export default function Form() {
                       />
                     )}
                   />
-                  <div className="inputNameError">
+                  <div className="inputError">
                     {errors?.selectState?.type === 'required' && (
                       <p className="pErrorName">This field is required</p>
                     )}
@@ -270,7 +270,7 @@ export default function Form() {
                         /^((\d{5}-\d{4})|(\d{5})|([A-Z]\d[A-Z]\s\d[A-Z]\d))$/g,
                     })}
                   />
-                  <div className="inputNameError">
+                  <div className="inputError">
                     {errors?.zipCode?.type === 'required' && (
                       <p className="pErrorName">This field is required</p>
                     )}
@@ -299,7 +299,7 @@ export default function Form() {
                   />
                 )}
               />
-              <div className="inputNameError">
+              <div className="inputError">
                 {errors?.selectDepartement?.type === 'required' && (
                   <p className="pErrorName">This field is required</p>
                 )}

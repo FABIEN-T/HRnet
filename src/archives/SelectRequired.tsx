@@ -39,7 +39,7 @@ function SelectRequired() {
           />
         )}
       />
-      <div className="inputNameError">
+      <div className="inputError">
         {errors?.select?.type === 'required' && (
           <p className="pErrorName">This field is required</p>
         )}

@@ -1,0 +1,133 @@
+/* h1 {
+  margin: 40px;
+  text-align: center;
+} */
+
+/* #93ad18
+#6e8510
+#576c05	 */
+.logoTitle {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  /* box-sizing: border-box; */
+  margin: 0 auto 16px;
+  padding: 10px;
+  border: #576c05 solid 2px;
+  border-radius: 10px;
+  /* width: 120px; */
+  height: 120px;
+}
+
+img {
+  /* display: block;
+  margin: 0; */
+  width: 92;
+  height: 120px;
+}
+
+h1 {
+  color: #576c05;
+  margin: 0 0 1px;
+  font-stretch: expanded;
+  writing-mode: vertical-rl;
+  text-orientation: sideways;
+  transform: rotate(180deg);
+  letter-spacing: 7px;
+}
+
+.linkCurrentEmployees {
+  display: block;
+  align-content: center;
+  margin: 0 auto;
+  padding: 6px 16px;
+  width: fit-content;
+  /* border: #576c05 solid 2px; */
+  border-radius: 10px;
+  font-weight: 500;
+  color: #576c05;
+  /* text-decoration: none; */
+  text-align: center;
+}
+
+.linkCurrentEmployees:hover {
+  color: #93ad18;
+}
+
+h2 {
+  margin: 12px 0;
+  text-align: center;
+}
+
+.createEmployee {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f6eb;
+  width: 320px;
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.inputPadding {
+  box-sizing: border-box;
+  padding: 0 16px 0px;
+}
+
+.inputDate {
+  width: 248px;
+}
+
+label {
+  margin: 16px 0 2px;
+}
+
+.labelError {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.inputError {
+  text-align: right;
+  font-size: 70%;
+  color: red;
+  font-weight: bold;
+  height: 12px;
+  margin: 1px 0 0;
+}
+
+fieldset {
+  margin: 16px 0 0;
+  padding: 0px 0px 10px;
+  border: 2px #6e8510 solid;
+  border-radius: 10px;
+}
+
+legend {
+  margin: 0 3px;
+  font-size: 120%;
+}
+
+.buttonDiv {
+  margin: 0px auto;
+}
+
+.edit-button {
+  display: block;
+  margin: 24px auto 0;
+  cursor: pointer;
+  padding: 5px 30px;
+  color: white;
+  background-color: #6e8510;
+  border-radius: 10px;
+  border: 3px solid #576c05;
+}
+
+.edit-button:hover {
+  background-color: #93ad18;
+}

@@ -29,7 +29,7 @@ export default function DateField() {
           />
         )}
       />
-      <div className="inputNameError">
+      <div className="inputError">
         {errors?.dateStart?.type === 'required' && (
           <p className="pErrorName">This field is required</p>
         )}

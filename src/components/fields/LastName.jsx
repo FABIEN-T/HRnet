@@ -9,8 +9,12 @@ function FirstName() {
   } = useFormContext() // retrieve hook methods
 
   return (
-    <div className="inputContainer">
-      <label>Last Name</label>
+    <div className="inputContainer inputPadding">
+      <div className="labelError">
+        <label>Last Name</label>
+        <p className="inputError">{errors.lastName?.message}</p>
+      </div>
+
       <input
         {...register('lastName', {
           minLength: { value: 2, message: '2<Length<20' },
@@ -22,9 +26,6 @@ function FirstName() {
           },
         })}
       />
-      <div className="inputNameError">
-        <p className="error">{errors.lastName?.message}</p>
-      </div>
     </div>
   )
 }

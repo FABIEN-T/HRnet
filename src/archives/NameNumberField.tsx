@@ -40,7 +40,7 @@ export default function NameNumberField({ typeField, label }) {
 // }
 
 {
-  /* <div className="inputNameError">
+  /* <div className="inputError">
         {(errors?.firstName?.type ||
           errors?.lastName?.type ||
           errors?.street?.type ||

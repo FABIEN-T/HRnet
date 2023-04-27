@@ -1,19 +1,19 @@
 // @ts-nocheck
 
-import '../App.css'
-// import '../styles.css'
+import './homeForm.css'
 import { useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 
-import FirstName from './fields/FirstName'
-import LastName from './fields/LastName'
-import Street from './fields/Street'
-import City from './fields/City'
-import ZipCode from './fields/ZipCode'
-import DateBirth from './fields/DateBirth'
-import DateStart from './fields/DateStart'
-import SelectState from './fields/SelectState'
-import SelectDepartement from './fields/SelectDepartement'
+import Header from '../components/Header'
+import FirstName from '../components/fields/FirstName'
+import LastName from '../components/fields/LastName'
+import Street from '../components/fields/Street'
+import City from '../components/fields/City'
+import ZipCode from '../components/fields/ZipCode'
+import DateBirth from '../components/fields/DateBirth'
+import DateStart from '../components/fields/DateStart'
+import SelectState from '../components/fields/SelectState'
+import SelectDepartement from '../components/fields/SelectDepartement'
 
 import { Modal } from 'fv-modal-react'
 
@@ -64,8 +64,8 @@ export default function HomeForm() {
 
   return (
     <div className="createEmployee">
-      <h1>HRnet</h1>
-      <h2>Create Employee</h2>
+      <Header />
+
       <FormProvider
         {...{
           control,
@@ -79,14 +79,13 @@ export default function HomeForm() {
           onSubmit={handleSubmit((data) => {
             console.log('Values', data)
           })}
-          className="form"
         >
           <FirstName />
           <LastName />
           <DateBirth />
           <DateStart />
           <fieldset>
-            <legend>Adress</legend>
+            <legend>Address</legend>
             <div>
               <Street />
               <City />
@@ -95,7 +94,6 @@ export default function HomeForm() {
             </div>
           </fieldset>
           <SelectDepartement />
-          {/* <input type="submit" value="Pointe" /> */}
           <div className="buttonDiv">
             <button className="edit-button" onClick={handleSubmit(save)}>
               Save
@@ -106,15 +104,15 @@ export default function HomeForm() {
           <Modal
             setIsOpen={setIsOpen}
             text={tempFirstName + ' ' + tempLastName + ' is saved.'}
-            modalBgColor={'blue'}
-            modalBorder={'3px solid white'}
+            modalBgColor={'#f2f6e8'}
+            modalBorder={'3px solid #576c05'}
             modalBorderRadius={'20px'}
-            crossCloseBg={'red'}
-            crossCloseColor={'white'}
-            crossCloseBorder={'3px solid white'}
+            crossCloseBg={'#f2f6e8'}
+            crossCloseColor={'#576c05'}
+            crossCloseBorder={'3px solid #576c05'}
             fontFamily={'Trebuchet MS'}
             fontSize={'20px'}
-            fontColor={'white'}
+            fontColor={''}
             textAlign={'left'}
           />
         )}
