@@ -3,25 +3,42 @@
 import './homeForm.css'
 import { useState } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
+import { lazy } from 'react'
+
+// const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 
 import Header from '../components/Header'
 import FirstName from '../components/fields/FirstName'
+// const FirstName = lazy(() => import('../components/fields/FirstName'))
 import LastName from '../components/fields/LastName'
 import Street from '../components/fields/Street'
 import City from '../components/fields/City'
 import ZipCode from '../components/fields/ZipCode'
-import DateBirth from '../components/fields/DateBirth'
+// import DateBirth from '../components/fields/DateBirth'
+const DateBirth = lazy(() => import('../components/fields/DateBirth'))
 import DateStart from '../components/fields/DateStart'
+// const DateStart = lazy(() => import('../components/fields/DateStart'))
 import SelectState from '../components/fields/SelectState'
 import SelectDepartement from '../components/fields/SelectDepartement'
 
 import { Modal } from 'fv-modal-react'
+
+import usePersistState from '../persistState/usePersistState'
+
+// When setting values, they will now save to the state and also update the store in the browser.
+// setUserData({
+//   email: 'example@example.com',
+//   token: '123abc...',
+// })
 
 let tempFirstName = ''
 let tempLastName = ''
 
 export default function HomeForm() {
   const [isOpen, setIsOpen] = useState(false)
+  // you can also optionally pass a default value which will be overwritten if the store already exists.
+  const [userData, setUserData] = usePersistState('employees', [])
+  console.log('userData', userData)
 
   const defaultValues = {
     firstName: '',
@@ -37,7 +54,7 @@ export default function HomeForm() {
     watch,
   } = useForm({
     defaultValues,
-    mode: 'all', // onChange | onBlur | onSubmit | onTouched | all
+    mode: 'onSubmit', // onChange | onBlur | onSubmit | onTouched | all
   })
 
   const save = (data) => {
@@ -45,7 +62,7 @@ export default function HomeForm() {
     tempLastName = data.lastName
 
     setIsOpen(true)
-    const employees = JSON.parse(localStorage.getItem('employees')) || []
+    const employees = userData
     const employee = {
       firstName: data.firstName,
       lastName: data.lastName,
@@ -55,11 +72,12 @@ export default function HomeForm() {
       street: data.street,
       city: data.city,
       state: data.selectState.abbreviation,
-      zipCode: data.dateBirth.toLocaleDateString(),
+      zipCode: data.zipcode,
     }
-    console.log(employees)
+    // console.log(employee)
+    // When setting values, they will now save to the state and also update the store in the browser.
     employees.push(employee)
-    localStorage.setItem('employees', JSON.stringify(employees))
+    setUserData(employees)
   }
 
   return (
@@ -107,7 +125,7 @@ export default function HomeForm() {
             modalBgColor={'#576c05'}
             modalBorder={'3px solid white'}
             modalBorderRadius={'20px'}
-            crossCloseBg={'#576c05'}
+            crossCloseBg={'#2b3603'}
             crossCloseColor={'white'}
             crossCloseBorder={'3px solid white'}
             fontFamily={'Trebuchet MS'}

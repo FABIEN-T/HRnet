@@ -18,14 +18,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import HomeForm from './pages/HomeForm'
-import EmployeeList from './pages/EmployeeList'
+import EmployeesList from './pages/EmployeeList'
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<HomeForm />} />
-        <Route path="/employee-list" element={<EmployeeList />} />
+        {/* <Route path="/employee-list" element={<EmployeesList />} /> */}
       </Routes>
     </Router>
   )

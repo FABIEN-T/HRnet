@@ -63,7 +63,8 @@ h2 {
   box-sizing: border-box;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f2f6eb;
+  /* background-color: #f2f6eb; */
+  /* background-color: #eaede0; */
   width: 320px;
 }
 
