@@ -3,7 +3,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import DataTable from 'react-data-table-component'
-import { data } from './sampleMovieData'
 
 const TextField = styled.input`
   height: 32px;
@@ -63,7 +62,7 @@ const columns = [
   },
   {
     name: 'Start Date',
-    selector: (row) => row.dateStart,
+    selector: (row) => row.startDate,
     sortable: true,
   },
   {
@@ -102,14 +101,14 @@ export default function EmployeesList() {
   const [filterText, setFilterText] = React.useState('')
   const [resetPaginationToggle, setResetPaginationToggle] =
     React.useState(false)
-  const filteredItems = data.filter(
+  const filteredItems = JSON.parse(localStorage.getItem('employees')).filter(
     (object) =>
       // item.title && item.title.toLowerCase().includes(filterText.toLowerCase())
       (object.firstName &&
         object.firstName.toLowerCase().includes(filterText.toLowerCase())) ||
       (object.lastName &&
         object.lastName.toLowerCase().includes(filterText.toLowerCase())) ||
-      (object.dateStart && object.dateStart.includes(filterText)) ||
+      (object.startDate && object.startDate.includes(filterText)) ||
       (object.department &&
         object.department.toLowerCase().includes(filterText.toLowerCase())) ||
       (object.dateOfBirth && object.dateOfBirth.includes(filterText)) ||
@@ -140,7 +139,7 @@ export default function EmployeesList() {
 
   return (
     <DataTable
-      title="Movie List"
+      title="Current Employees"
       columns={columns}
       data={filteredItems}
       pagination

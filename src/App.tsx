@@ -21,11 +21,13 @@ import HomeForm from './pages/HomeForm'
 import EmployeesList from './pages/EmployeeList'
 
 function App() {
+  // const bidule = JSON.parse(localStorage.getItem('employees'))
+  // console.log('bidule', bidule)
   return (
     <Router>
       <Routes>
         <Route path="/" element={<HomeForm />} />
-        {/* <Route path="/employee-list" element={<EmployeesList />} /> */}
+        <Route path="/employee-list" element={<EmployeesList />} />
       </Routes>
     </Router>
   )
