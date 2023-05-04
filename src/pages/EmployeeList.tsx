@@ -1,8 +1,11 @@
 // @ts-nocheck
 
 import React from 'react'
+import DivLogo from '../components/DivLogo'
 import styled from 'styled-components'
-import DataTable from 'react-data-table-component'
+import DataTable, { createTheme } from 'react-data-table-component'
+
+import './homeForm.css'
 
 const TextField = styled.input`
   height: 32px;
@@ -14,24 +17,46 @@ const TextField = styled.input`
   border-bottom-right-radius: 0;
   border: 1px solid #e5e5e5;
   padding: 0 32px 0 16px;
-
+  border: 2px solid #576c05;
   &:hover {
     cursor: pointer;
   }
 `
 
 const ClearButton = styled.button`
+  color: black;
+  background: #eaede0;
+  border-top: 2px solid #576c05;
+  border-bottom: 2px solid #576c05;
+  border-right: 2px solid #576c05;
+  border-left: 0px solid #576c05;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-  height: 34px;
+  height: 36px;
   width: 32px;
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+  &:hover {
+    cursor: pointer;
+    color: white;
+    background: #6e8510;
+  }
 `
+
+createTheme('solarized', {
+  text: {
+    primary: 'black',
+    secondary: 'black',
+  },
+  background: {
+    default: '#f4f6ef',
+  },
+  striped: true,
+})
 
 const FilterComponent = ({ filterText, onFilter, onClear }) => (
   <>
@@ -49,11 +74,44 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
   </>
 )
 
+const customStyles = {
+  rows: {
+    style: {
+      minHeight: '53px', // override the row height
+    },
+  },
+  headRow: {
+    style: {
+      // borderStyle: 'solid',
+      // borderBottom: '2px solid #576c05',
+      // borderTopColor: 'pink',
+      fontSize: '110%',
+      fontWeight: 'bold',
+    },
+  },
+  headCells: {
+    style: {
+      paddingLeft: '8px', // override the cell padding for head cells
+      paddingRight: '8px',
+      background: '#6e8510',
+      color: 'white',
+    },
+  },
+
+  cells: {
+    style: {
+      paddingLeft: '8px', // override the cell padding for data cells
+      paddingRight: '8px',
+    },
+  },
+}
+
 const columns = [
   {
     name: 'First Name',
     selector: (row) => row.firstName,
     sortable: true,
+    maxWidth: '130px',
   },
   {
     name: 'Last Name',
@@ -64,31 +122,37 @@ const columns = [
     name: 'Start Date',
     selector: (row) => row.startDate,
     sortable: true,
+    width: '100px',
   },
   {
     name: 'Department',
     selector: (row) => row.department,
     sortable: true,
+    width: '120px',
   },
   {
     name: 'Date of birth',
     selector: (row) => row.dateOfBirth,
     sortable: true,
+    width: '115px',
   },
   {
     name: 'Street',
     selector: (row) => row.street,
     sortable: true,
+    width: '180px',
   },
   {
     name: 'City',
     selector: (row) => row.city,
     sortable: true,
+    width: '100px',
   },
   {
     name: 'State',
     selector: (row) => row.state,
     sortable: true,
+    width: '70px',
   },
   {
     name: 'Zip Code',
@@ -138,25 +202,20 @@ export default function EmployeesList() {
   }, [filterText, resetPaginationToggle])
 
   return (
-    <DataTable
-      title="Current Employees"
-      columns={columns}
-      data={filteredItems}
-      pagination
-      paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
-      subHeader
-      subHeaderComponent={subHeaderComponentMemo}
-      persistTableHead
-    />
+    <div className="datatable">
+      <DivLogo />
+      <h2>Current Employees</h2>
+      <DataTable
+        columns={columns}
+        customStyles={customStyles}
+        data={filteredItems}
+        pagination
+        paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
+        subHeader
+        subHeaderComponent={subHeaderComponentMemo}
+        persistTableHead
+        theme="solarized"
+      />
+    </div>
   )
 }
-
-// function EmployeesList() {
-//   return (
-//     <div>
-//       <h1>Current Employees</h1>
-//     </div>
-//   )
-// }
-
-// export default EmployeesList

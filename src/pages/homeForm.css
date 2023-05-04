@@ -3,9 +3,29 @@
   text-align: center;
 } */
 
+.datatable {
+  /* background-color: #f4f6ef; */
+  margin: auto;
+  padding: 20px 0;
+  /* background-color: rgb(32, 68, 56); */
+  width: 90%;
+}
+
+.rdt_TableRow:nth-child(2n + 1) {
+  background-color: #eaede0;
+  color: black;
+}
+
+.rdt_TableRow:nth-child(2n) {
+  background-color: #f4f6ef;
+}
+
 /* #93ad18
 #6e8510
-#576c05	 */
+#576c05	 
+#eaede0 
+#f4f6ef
+*/
 .logoTitle {
   display: flex;
   justify-content: center;
@@ -15,7 +35,7 @@
   padding: 10px;
   border: #576c05 solid 2px;
   border-radius: 10px;
-  /* width: 120px; */
+  width: 120px;
   height: 120px;
 }
 
@@ -55,8 +75,13 @@ img {
 }
 
 h2 {
-  margin: 12px 0;
+  margin: 12px auto;
+  padding: 5px;
   text-align: center;
+  border-radius: 15px;
+  background-color: #6e8510;
+  color: white;
+  width: 280px;
 }
 
 .createEmployee {
