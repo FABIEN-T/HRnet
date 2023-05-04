@@ -1,6 +1,7 @@
 // @ts-nocheck
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 import DivLogo from '../components/DivLogo'
 import styled from 'styled-components'
 import DataTable, { createTheme } from 'react-data-table-component'
@@ -216,6 +217,9 @@ export default function EmployeesList() {
         persistTableHead
         theme="solarized"
       />
+      <Link to="/" className="linkCurrentEmployees">
+        Home
+      </Link>
     </div>
   )
 }
