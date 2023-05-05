@@ -1,15 +1,14 @@
 import { Link } from 'react-router-dom'
-import logo from '../assets/Logo-Wealth-Health.jpg'
 import DivLogo from './DivLogo'
 
-export default function Header() {
+export default function Header({ link, nameLink, title }) {
   return (
     <>
       <DivLogo />
-      <Link to="/employee-list" className="linkCurrentEmployees">
-        View Current Employees
+      <Link to={link} className="linkCurrentEmployees">
+        {nameLink}
       </Link>
-      <h2>Create Employee</h2>
+      <h2>{title}</h2>
     </>
   )
 }

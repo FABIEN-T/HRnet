@@ -3,7 +3,7 @@
   text-align: center;
 } */
 
-.datatable {
+.currentEmployees {
   /* background-color: #f4f6ef; */
   margin: auto;
   padding: 20px 0;
@@ -31,8 +31,8 @@
   justify-content: center;
   flex-direction: row;
   /* box-sizing: border-box; */
-  margin: 0 auto 16px;
-  padding: 10px;
+  margin: 0 auto 2px;
+  padding: 11px 6px 9px 14px;
   border: #576c05 solid 2px;
   border-radius: 10px;
   width: 120px;
@@ -70,18 +70,18 @@ img {
   text-align: center;
 }
 
-.linkCurrentEmployees:hover {
+.link:hover {
   color: #93ad18;
 }
 
 h2 {
-  margin: 12px auto;
+  margin: 4px auto 24px;
   padding: 5px;
   text-align: center;
   border-radius: 15px;
   background-color: #6e8510;
   color: white;
-  width: 280px;
+  max-width: 280px;
 }
 
 .createEmployee {

@@ -2,11 +2,12 @@
 
 import React from 'react'
 import { Link } from 'react-router-dom'
-import DivLogo from '../components/DivLogo'
+import Header from '../components/Header'
 import styled from 'styled-components'
 import DataTable, { createTheme } from 'react-data-table-component'
 
 import './homeForm.css'
+import useEmployee from '../state/EmployeeContext'
 
 const TextField = styled.input`
   height: 32px;
@@ -118,6 +119,7 @@ const columns = [
     name: 'Last Name',
     selector: (row) => row.lastName,
     sortable: true,
+    maxWidth: '130px',
   },
   {
     name: 'Start Date',
@@ -141,7 +143,7 @@ const columns = [
     name: 'Street',
     selector: (row) => row.street,
     sortable: true,
-    width: '180px',
+    minWidth: '130px',
   },
   {
     name: 'City',
@@ -163,12 +165,15 @@ const columns = [
 ]
 
 export default function EmployeesList() {
+  const { employees, addToEmployeesList } = useEmployee
+
   const [filterText, setFilterText] = React.useState('')
   const [resetPaginationToggle, setResetPaginationToggle] =
     React.useState(false)
-  const filteredItems = JSON.parse(localStorage.getItem('employees')).filter(
+  console.log('emplyees', employees)
+  // const filteredItems = JSON.parse(localStorage.getItem('employees')).filter(
+  const filteredItems = employees.filter(
     (object) =>
-      // item.title && item.title.toLowerCase().includes(filterText.toLowerCase())
       (object.firstName &&
         object.firstName.toLowerCase().includes(filterText.toLowerCase())) ||
       (object.lastName &&
@@ -203,9 +208,8 @@ export default function EmployeesList() {
   }, [filterText, resetPaginationToggle])
 
   return (
-    <div className="datatable">
-      <DivLogo />
-      <h2>Current Employees</h2>
+    <div className="currentEmployees">
+      <Header link="/" nameLink="Home" title="Current Employees" />
       <DataTable
         columns={columns}
         customStyles={customStyles}
@@ -217,9 +221,6 @@ export default function EmployeesList() {
         persistTableHead
         theme="solarized"
       />
-      <Link to="/" className="linkCurrentEmployees">
-        Home
-      </Link>
     </div>
   )
 }

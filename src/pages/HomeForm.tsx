@@ -22,23 +22,14 @@ import SelectState from '../components/fields/SelectState'
 import SelectDepartement from '../components/fields/SelectDepartement'
 
 import { Modal } from 'fv-modal-react'
-
-import usePersistState from '../persistState/usePersistState'
-
-// When setting values, they will now save to the state and also update the store in the browser.
-// setUserData({
-//   email: 'example@example.com',
-//   token: '123abc...',
-// })
+import useEmployee from '../state/EmployeeContext'
 
 let tempFirstName = ''
 let tempLastName = ''
 
 export default function HomeForm() {
   const [isOpen, setIsOpen] = useState(false)
-  // you can also optionally pass a default value which will be overwritten if the store already exists.
-  const [userData, setUserData] = usePersistState('employees', [])
-  console.log('userData', userData)
+  const { employees } = useEmployee()
 
   const defaultValues = {
     firstName: '',
@@ -62,7 +53,7 @@ export default function HomeForm() {
     tempLastName = data.lastName
 
     setIsOpen(true)
-    const employees = userData
+    // const employees = JSON.parse(localStorage.getItem('employees')) || []
     const employee = {
       firstName: data.firstName,
       lastName: data.lastName,
@@ -74,16 +65,19 @@ export default function HomeForm() {
       state: data.selectState.abbreviation,
       zipCode: data.zipcode,
     }
-    // console.log(employee)
-    // When setting values, they will now save to the state and also update the store in the browser.
-    employees.push(employee)
-    setUserData(employees)
+    console.log(employee)
+    // employees.push(employee)
+    // localStorage.setItem('employees', JSON.stringify(employees))
+    addToEmployeesList(employee)
   }
 
   return (
     <div className="createEmployee">
-      <Header />
-
+      <Header
+        link="/employee-list"
+        nameLink="View Current Employees"
+        title="Create Employee"
+      />
       <FormProvider
         {...{
           control,
@@ -94,9 +88,9 @@ export default function HomeForm() {
         }}
       >
         <form
-          onSubmit={handleSubmit((data) => {
-            console.log('Values', data)
-          })}
+        // onSubmit={handleSubmit((data) => {
+        //   console.log('Values', data)
+        // })}
         >
           <FirstName />
           <LastName />
