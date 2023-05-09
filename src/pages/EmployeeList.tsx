@@ -1,13 +1,13 @@
 // @ts-nocheck
 
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useEffect } from 'react'
 import Header from '../components/Header'
 import styled from 'styled-components'
 import DataTable, { createTheme } from 'react-data-table-component'
 
 import './homeForm.css'
-import useEmployee from '../state/EmployeeContext'
+// import { useContext, useEffect } from 'react'
+import EmployeeContext from '../utils/EmployeeContextProvider'
 
 const TextField = styled.input`
   height: 32px;
@@ -165,12 +165,12 @@ const columns = [
 ]
 
 export default function EmployeesList() {
-  const { employees, addToEmployeesList } = useEmployee
+  const { employees } = useContext(EmployeeContext)
 
   const [filterText, setFilterText] = React.useState('')
   const [resetPaginationToggle, setResetPaginationToggle] =
     React.useState(false)
-  console.log('emplyees', employees)
+  console.log('EmployeesList employees', employees)
   // const filteredItems = JSON.parse(localStorage.getItem('employees')).filter(
   const filteredItems = employees.filter(
     (object) =>

@@ -1,12 +1,13 @@
 // @ts-nocheck
 
 import './homeForm.css'
-import { useState } from 'react'
+import { useState, useMemo, useCallback, useEffect, useContext } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { lazy } from 'react'
 
 // const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
 
+import EmployeeContext from '../utils/EmployeeContextProvider'
 import Header from '../components/Header'
 import FirstName from '../components/fields/FirstName'
 // const FirstName = lazy(() => import('../components/fields/FirstName'))
@@ -22,14 +23,16 @@ import SelectState from '../components/fields/SelectState'
 import SelectDepartement from '../components/fields/SelectDepartement'
 
 import { Modal } from 'fv-modal-react'
-import useEmployee from '../state/EmployeeContext'
+// import useEmployee from '../utils/EmployeeContext'
 
 let tempFirstName = ''
 let tempLastName = ''
 
 export default function HomeForm() {
   const [isOpen, setIsOpen] = useState(false)
-  const { employees } = useEmployee()
+  // const { employees, addToEmployeesList } = useEmployee()
+  // const { employees, addToEmployeesList } = useContext(EmployeeContext)
+  const { employees, addToEmployeesList } = useContext(EmployeeContext)
 
   const defaultValues = {
     firstName: '',
@@ -65,11 +68,16 @@ export default function HomeForm() {
       state: data.selectState.abbreviation,
       zipCode: data.zipcode,
     }
-    console.log(employee)
+    // console.log('Homeform employee', employee)
     // employees.push(employee)
     // localStorage.setItem('employees', JSON.stringify(employees))
     addToEmployeesList(employee)
   }
+
+  useEffect(() => {
+    console.log('*****************')
+    employees.map((employee) => console.log('HomeForm', employee.firstName))
+  })
 
   return (
     <div className="createEmployee">

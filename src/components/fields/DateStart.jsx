@@ -12,7 +12,7 @@ function DateStart() {
   return (
     <div className="inputContainer inputPadding">
       <div className="labelError">
-        <label htmlFor="dateBirth">Start Date</label>
+        <label htmlFor="dateStart">Start Date</label>
         <p className="inputError">{errors?.dateStart?.message}</p>
       </div>
       <Controller
