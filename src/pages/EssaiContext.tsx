@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 import { useContext, useEffect } from 'react'
-import EmployeeContext from '../utils/EmployeeContextProvider'
+import EmployeeContext from '../utilsContextProvider/EmployeeContextProvider'
 
 export default function EssaiContext() {
   const { employees } = useContext(EmployeeContext)

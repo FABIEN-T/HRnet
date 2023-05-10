@@ -2,24 +2,26 @@
 
 // import '../homeForm.css'
 import '../App.css'
-import { useState, useMemo, useCallback, useEffect, useContext } from 'react'
+import {
+  lazy,
+  useState,
+  useMemo,
+  useCallback,
+  useEffect,
+  useContext,
+} from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
-import { lazy } from 'react'
-
-// const MarkdownPreview = lazy(() => import('./MarkdownPreview.js'));
-
-import EmployeeContext from '../utils/EmployeeContextProvider'
-import Header from '../components/Header'
-import FirstName from '../components/fields/FirstName'
-import LastName from '../components/fields/LastName'
-// import DateBirth from '../components/fields/DateBirth'
-const DateBirth = lazy(() => import('../components/fields/DateBirth'))
-import DateStart from '../components/fields/DateStart'
-import Address from '../components/fields/Address'
-import SelectDepartement from '../components/fields/SelectDepartement'
-
 import { Modal } from 'fv-modal-react'
-// import useEmployee from '../utils/EmployeeContext'
+
+import EmployeeContext from '../utilsContextProvider/EmployeeContextProvider'
+import Header from '../components/Header'
+import FirstName from '../components/fieldsForm/FirstName'
+import LastName from '../components/fieldsForm/LastName'
+// import DateBirth from '../components/fields/DateBirth'
+const DateBirth = lazy(() => import('../components/fieldsForm/DateBirth'))
+import DateStart from '../components/fieldsForm/DateStart'
+import Address from '../components/fieldsForm/Address'
+import SelectDepartement from '../components/fieldsForm/SelectDepartement'
 
 let tempFirstName = ''
 let tempLastName = ''
@@ -29,9 +31,9 @@ export default function HomeForm() {
   const { employees, addToEmployeesList } = useContext(EmployeeContext)
 
   const defaultValues = {
-    firstName: '',
-    lastName: '',
-    city: '',
+    //   firstName: '',
+    //   lastName: '',
+    //   city: '',
   }
 
   const {
