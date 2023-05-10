@@ -19,12 +19,8 @@ export const EmployeeProvider = ({ children }) => {
   const [state, dispatch] = useReducer(employeeReducer, initialState)
 
   const addToEmployeesList = useCallback((employee) => {
-    // console.log('EmployeeContext : employee', employee)
-    // console.log('EmployeeContext : employeeS !', state.employees)
-    // const employees = state.employees.concat(employee)
     dispatch({
       type: 'CREATE_EMPLOYEE',
-      // payload: state.employees.concat(employee),
       payload: employee,
     })
   }, [])
@@ -34,11 +30,6 @@ export const EmployeeProvider = ({ children }) => {
     employees: state.employees,
     addToEmployeesList,
   }))
-  // const contextValue = {
-  //   employees: state.employees,
-  //   addToEmployeesList,
-  // }
-  // const employees = state.employees
 
   useEffect(() => console.log('Provider state', contextValue.employees))
 

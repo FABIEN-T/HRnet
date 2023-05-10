@@ -1,5 +1,4 @@
 // @ts-nocheck
-// @ts-nocheck
 
 import { useFormContext, Controller } from 'react-hook-form'
 import Select from 'react-select'

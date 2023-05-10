@@ -7,12 +7,14 @@ const employeeReducer = (state, action) => {
   if (type === "CREATE_EMPLOYEE") {
     return {
       ...state,
-      // employees: payload
       employees: state.employees.concat(payload)
     };
   }
+  };
   
-  // switch (type) {
+export default employeeReducer;
+  
+// switch (type) {
   //       case "CREATE_EMPLOYEE":
   //       // console.log("CREATE_EMPLOYEE payload", payload);  
   //       return {
@@ -38,7 +40,3 @@ const employeeReducer = (state, action) => {
   //     default:
   //       throw new Error(`No case for type ${type} found in employeeReducer.`);
   //   }
-  };
-  
-export default employeeReducer;
-  

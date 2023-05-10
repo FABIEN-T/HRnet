@@ -5,8 +5,8 @@ import Header from '../components/Header'
 import styled from 'styled-components'
 import DataTable, { createTheme } from 'react-data-table-component'
 
-import './homeForm.css'
-// import { useContext, useEffect } from 'react'
+// import './homeForm.css'
+import '../App.css'
 import EmployeeContext from '../utils/EmployeeContextProvider'
 
 const TextField = styled.input`

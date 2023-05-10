@@ -1,6 +1,7 @@
 // @ts-nocheck
 
-import './homeForm.css'
+// import '../homeForm.css'
+import '../App.css'
 import { useState, useMemo, useCallback, useEffect, useContext } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
 import { lazy } from 'react'
@@ -10,16 +11,11 @@ import { lazy } from 'react'
 import EmployeeContext from '../utils/EmployeeContextProvider'
 import Header from '../components/Header'
 import FirstName from '../components/fields/FirstName'
-// const FirstName = lazy(() => import('../components/fields/FirstName'))
 import LastName from '../components/fields/LastName'
-import Street from '../components/fields/Street'
-import City from '../components/fields/City'
-import ZipCode from '../components/fields/ZipCode'
 // import DateBirth from '../components/fields/DateBirth'
 const DateBirth = lazy(() => import('../components/fields/DateBirth'))
 import DateStart from '../components/fields/DateStart'
-// const DateStart = lazy(() => import('../components/fields/DateStart'))
-import SelectState from '../components/fields/SelectState'
+import Address from '../components/fields/Address'
 import SelectDepartement from '../components/fields/SelectDepartement'
 
 import { Modal } from 'fv-modal-react'
@@ -30,8 +26,6 @@ let tempLastName = ''
 
 export default function HomeForm() {
   const [isOpen, setIsOpen] = useState(false)
-  // const { employees, addToEmployeesList } = useEmployee()
-  // const { employees, addToEmployeesList } = useContext(EmployeeContext)
   const { employees, addToEmployeesList } = useContext(EmployeeContext)
 
   const defaultValues = {
@@ -95,24 +89,12 @@ export default function HomeForm() {
           watch,
         }}
       >
-        <form
-        // onSubmit={handleSubmit((data) => {
-        //   console.log('Values', data)
-        // })}
-        >
+        <form>
           <FirstName />
           <LastName />
           <DateBirth />
           <DateStart />
-          <fieldset>
-            <legend>Address</legend>
-            <div>
-              <Street />
-              <City />
-              <SelectState />
-              <ZipCode />
-            </div>
-          </fieldset>
+          <Address />
           <SelectDepartement />
           <div className="buttonDiv">
             <button className="edit-button" onClick={handleSubmit(save)}>
