@@ -14,6 +14,9 @@ import { useForm, FormProvider } from 'react-hook-form'
 import { Modal } from 'fv-modal-react'
 
 import EmployeeContext from '../utilsContextProvider/EmployeeContextProvider'
+import memoryListEmployees from '../utilsContextProvider/memoryListEmployees'
+import { initialState } from '../utilsContextProvider/employeeReducer'
+
 import Header from '../components/Header'
 import FirstName from '../components/fieldsForm/FirstName'
 import LastName from '../components/fieldsForm/LastName'
@@ -22,11 +25,18 @@ const DateBirth = lazy(() => import('../components/fieldsForm/DateBirth'))
 import DateStart from '../components/fieldsForm/DateStart'
 import Address from '../components/fieldsForm/Address'
 import SelectDepartement from '../components/fieldsForm/SelectDepartement'
+import MyModal from '../components/MyModal'
 
 let tempFirstName = ''
 let tempLastName = ''
 
+// function initState() {
+//   initialState = memoryListEmployees
+// }
+const bidule = []
+
 export default function HomeForm() {
+  // initState()
   const [isOpen, setIsOpen] = useState(false)
   const { employees, addToEmployeesList } = useContext(EmployeeContext)
 
@@ -68,6 +78,10 @@ export default function HomeForm() {
     // employees.push(employee)
     // localStorage.setItem('employees', JSON.stringify(employees))
     addToEmployeesList(employee)
+    memoryListEmployees.push(employee)
+    console.log('memoryListEmployees', memoryListEmployees)
+    // bidule.push(employee)
+    // console.log('bidule', bidule)
   }
 
   useEffect(() => {
@@ -105,19 +119,10 @@ export default function HomeForm() {
           </div>
         </form>
         {isOpen && (
-          <Modal
+          <MyModal
             setIsOpen={setIsOpen}
-            text={tempFirstName + ' ' + tempLastName + ' is saved.'}
-            modalBgColor={'#576c05'}
-            modalBorder={'3px solid white'}
-            modalBorderRadius={'20px'}
-            crossCloseBg={'#2b3603'}
-            crossCloseColor={'white'}
-            crossCloseBorder={'3px solid white'}
-            fontFamily={'Trebuchet MS'}
-            fontSize={'20px'}
-            fontColor={'white'}
-            textAlign={'left'}
+            tempFirstName={tempFirstName}
+            tempLastName={tempLastName}
           />
         )}
       </FormProvider>

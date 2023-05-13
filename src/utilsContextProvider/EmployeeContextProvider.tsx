@@ -8,8 +8,8 @@ import {
   useCallback,
   useMemo,
 } from 'react'
-import employeeReducer from './employeeReducer'
-import initialState from './initialState'
+import employeeReducer, { initialState } from './employeeReducer'
+// import initialState from './initialState'
 
 const EmployeeContext = createContext(null)
 export default EmployeeContext

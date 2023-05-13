@@ -23,6 +23,8 @@
     "declaration": false,
   },
   "include": [
+    "vite.config.ts",
+    ".eslintrc.cjs",
     "src"
   ],
   "exclude": [
