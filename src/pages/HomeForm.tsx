@@ -14,15 +14,14 @@ import { useForm, FormProvider } from 'react-hook-form'
 import { Modal } from 'fv-modal-react'
 
 import EmployeeContext from '../utilsContextProvider/EmployeeContextProvider'
-import memoryListEmployees from '../utilsContextProvider/memoryListEmployees'
-import { initialState } from '../utilsContextProvider/employeeReducer'
 
 import Header from '../components/Header'
 import FirstName from '../components/fieldsForm/FirstName'
 import LastName from '../components/fieldsForm/LastName'
-// import DateBirth from '../components/fields/DateBirth'
-const DateBirth = lazy(() => import('../components/fieldsForm/DateBirth'))
+import DateBirth from '../components/fieldsForm/DateBirth'
+// const DateBirth = lazy(() => import('../components/fieldsForm/DateBirth'))
 import DateStart from '../components/fieldsForm/DateStart'
+// const DateStart = lazy(() => import('../components/fieldsForm/DateStart'))
 import Address from '../components/fieldsForm/Address'
 import SelectDepartement from '../components/fieldsForm/SelectDepartement'
 import MyModal from '../components/MyModal'
@@ -30,21 +29,11 @@ import MyModal from '../components/MyModal'
 let tempFirstName = ''
 let tempLastName = ''
 
-// function initState() {
-//   initialState = memoryListEmployees
-// }
-const bidule = []
-
 export default function HomeForm() {
-  // initState()
   const [isOpen, setIsOpen] = useState(false)
-  const { employees, addToEmployeesList } = useContext(EmployeeContext)
+  const { addToEmployeesList } = useContext(EmployeeContext)
 
-  const defaultValues = {
-    //   firstName: '',
-    //   lastName: '',
-    //   city: '',
-  }
+  const defaultValues = {}
 
   const {
     control,
@@ -62,7 +51,7 @@ export default function HomeForm() {
     tempLastName = data.lastName
 
     setIsOpen(true)
-    // const employees = JSON.parse(localStorage.getItem('employees')) || []
+
     const employee = {
       firstName: data.firstName,
       lastName: data.lastName,
@@ -74,20 +63,8 @@ export default function HomeForm() {
       state: data.selectState.abbreviation,
       zipCode: data.zipcode,
     }
-    // console.log('Homeform employee', employee)
-    // employees.push(employee)
-    // localStorage.setItem('employees', JSON.stringify(employees))
     addToEmployeesList(employee)
-    memoryListEmployees.push(employee)
-    console.log('memoryListEmployees', memoryListEmployees)
-    // bidule.push(employee)
-    // console.log('bidule', bidule)
   }
-
-  useEffect(() => {
-    console.log('*****************')
-    employees.map((employee) => console.log('HomeForm', employee.firstName))
-  })
 
   return (
     <div className="createEmployee">
