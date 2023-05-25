@@ -12,17 +12,19 @@ function SelectDepartement() {
   return (
     <div className="inputContainer inputPadding">
       <div className="labelError">
-        <label htmlFor="selectDepartement">Departement</label>
+        <label htmlFor="selectDepartementId">Departement</label>
         <p className="inputError">{errors.selectDepartement?.message}</p>
       </div>
       <Controller
         control={control}
         name="selectDepartement"
+        // id="selectDepartementId"
         rules={{ required: 'This field is required' }}
         render={({ field }) => (
           <Select
             className="input"
             name="selectDepartement"
+            id="selectDepartementId"
             defaultValue={null}
             selected={field.value}
             onChange={field.onChange}

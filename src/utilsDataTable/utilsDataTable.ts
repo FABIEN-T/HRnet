@@ -5,54 +5,57 @@ export const columns = [
       name: 'First Name',
       selector: (row) => row.firstName,
       sortable: true,
-      maxWidth: '130px',
+      // minWidth: '70px',      
+      // maxWidth: '90px',
     },
     {
       name: 'Last Name',
       selector: (row) => row.lastName,
       sortable: true,
-      maxWidth: '130px',
+      // minWidth: '70px',
+      // maxWidth: '90px',
     },
     {
       name: 'Start Date',
       selector: (row) => row.startDate,
       sortable: true,
-      width: '100px',
+      // maxWidth: '120px',
     },
     {
       name: 'Department',
       selector: (row) => row.department,
       sortable: true,
-      width: '120px',
+      // minWidth: '102px',
     },
     {
       name: 'Date of birth',
       selector: (row) => row.dateOfBirth,
       sortable: true,
-      width: '115px',
+      // minWidth: '105px',
     },
     {
       name: 'Street',
       selector: (row) => row.street,
       sortable: true,
-      minWidth: '130px',
+      minWidth: '200px',      
     },
     {
       name: 'City',
       selector: (row) => row.city,
       sortable: true,
-      width: '100px',
+      // width: '90px',
     },
     {
       name: 'State',
       selector: (row) => row.state,
       sortable: true,
-      width: '70px',
+      maxWidth: '70px',
     },
     {
       name: 'Zip Code',
       selector: (row) => row.zipCode,
       sortable: true,
+      maxWidth: '70px',
     },
 ]
 
@@ -84,6 +87,7 @@ export const customStyles = {
       style: {
         paddingLeft: '8px', // override the cell padding for data cells
         paddingRight: '8px',
+        whiteSpace: 'normal',
       },
     },
   }

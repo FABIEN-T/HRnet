@@ -11,11 +11,12 @@ function Street() {
   return (
     <div className="inputContainer">
       <div className="labelError">
-        <label htmlFor="street">Street</label>
+        <label htmlFor="streetId">Street</label>
         <p className="inputError">{errors.street?.message}</p>
       </div>
       <input
-        name="street"
+        // name="street"
+        id="streetId"
         {...register('street', {
           maxLength: { value: 100, message: 'max : 100 characters' },
           required: 'This field is required',

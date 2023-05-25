@@ -1,7 +1,7 @@
 // @ts-nocheck
 
 
-let initialState = {
+const initialState = {
     employees: [
       {
         firstName: 'Tony',
@@ -39,19 +39,6 @@ let initialState = {
     ],
 }
 
-// let initialState = myInitialState
 
-
-// console.log("localStorage", localStorage.getItem('employees'))
-
-// function init() {
-//   const getLocalStorage = localStorage.getItem('employees') ? JSON.parse(localStorage.getItem('employees')) : []
-//   console.log("localStorage", getLocalStorage)
-//   const getLocalStorageLength = (getLocalStorage === null) ? 0 : getLocalStorage.length    
-//   const initialState = (myInitialState.length < getLocalStorageLength) ? getLocalStorage : myInitialState
-//   console.log("init()", initialState)
-// }
-
-// init()
 
 export default initialState

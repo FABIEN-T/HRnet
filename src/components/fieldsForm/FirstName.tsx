@@ -11,10 +11,12 @@ function FirstName() {
   return (
     <div className="inputContainer inputPadding">
       <div className="labelError">
-        <label>First Name</label>
+        <label htmlFor="firstNameId">First Name</label>
         <p className="inputError">{errors.firstName?.message}</p>
       </div>
       <input
+        // name="firstName"
+        id="firstNameId"
         {...register('firstName', {
           minLength: { value: 2, message: '2<Length<20' },
           maxLength: { value: 20, message: '2<Length<20' },

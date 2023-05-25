@@ -6,34 +6,14 @@
   padding: 0;
 }
 
-/* h1 {
-  margin: 40px;
-  text-align: center;
-} */
-
-.currentEmployees {
-  /* background-color: #f4f6ef; */
-  margin: auto;
-  padding: 20px 0;
-  /* background-color: rgb(32, 68, 56); */
-  width: 90%;
-}
-
-.rdt_TableRow:nth-child(2n + 1) {
-  background-color: #eaede0;
-  color: black;
-}
-
-.rdt_TableRow:nth-child(2n) {
-  background-color: #f4f6ef;
-}
-
 /* #93ad18
 #6e8510
 #576c05	 
 #eaede0 
 #f4f6ef
 */
+
+/* HEADER */
 .logoTitle {
   display: flex;
   justify-content: center;
@@ -165,4 +145,26 @@ legend {
 .edit-button:hover {
   color: white;
   background-color: #93ad18;
+}
+
+/* EMPLOYEE LIST */
+.currentEmployees {
+  margin: auto;
+  padding: 20px 0%;
+  width: 90%;
+}
+
+/* .GcSkG, */
+.sc-iVCKna {
+  /* color: black; */
+  white-space: normal;
+}
+
+.rdt_TableRow:nth-child(2n + 1) {
+  background-color: #eaede0;
+  /* color: black; */
+}
+
+.rdt_TableRow:nth-child(2n) {
+  background-color: #f4f6ef;
 }

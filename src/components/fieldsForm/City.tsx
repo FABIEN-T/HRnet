@@ -11,13 +11,15 @@ function City() {
   return (
     <div className="inputContainer">
       <div className="labelError">
-        <label>City</label>
+        <label htmlFor="cityId">City</label>
         <div className="inputError">
           <p className="error">{errors.city?.message}</p>
         </div>
       </div>
 
       <input
+        // name="city"
+        id="cityId"
         {...register('city', {
           minLength: { value: 2, message: '2<Length<30' },
           maxLength: { value: 30, message: '2<Length<30' },

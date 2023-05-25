@@ -12,18 +12,20 @@ function SelectState() {
   return (
     <div className="inputContainer">
       <div className="labelError">
-        <label htmlFor="selectState">State</label>
+        <label htmlFor="selectStateId">State</label>
         <p className="inputError">{errors?.selectState?.message}</p>
       </div>
 
       <Controller
         control={control}
         name="selectState"
+        id="selectStateId"
         rules={{ required: 'This field is required' }}
         render={({ field }) => (
           <Select
             className="input"
             name="selectState"
+            // id="selectStateId"
             defaultValue={null}
             selected={field.value}
             onChange={field.onChange}

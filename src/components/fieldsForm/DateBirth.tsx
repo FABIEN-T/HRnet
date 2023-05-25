@@ -12,17 +12,19 @@ function DateBirth() {
   return (
     <div className="inputContainer inputPadding">
       <div className="labelError">
-        <label htmlFor="dateBirth">Date of Birth</label>
+        <label htmlFor="dateBirthId">Date of Birth</label>
         <p className="inputError">{errors?.dateBirth?.message}</p>
       </div>
       <Controller
         control={control}
         name="dateBirth"
+        // id="dateBirthId"
         rules={{ required: 'This field is required' }}
         render={({ field }) => (
           <DatePicker
             className="inputDate"
             name="dateBirth"
+            id="dateBirthId"
             selected={field.value}
             dateFormat="MM/dd/yyyy"
             onChange={field.onChange}

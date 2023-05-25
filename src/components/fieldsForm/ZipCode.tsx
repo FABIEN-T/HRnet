@@ -11,12 +11,13 @@ function ZipCode() {
   return (
     <div className="inputContainer">
       <div className="labelError">
-        <label htmlFor="zipcode">Zip Code</label>
+        <label htmlFor="zipcodeId">Zip Code</label>
         <p className="inputError">{errors.zipcode?.message}</p>
       </div>
 
       <input
-        name="street"
+        // name="zipcode"
+        id="zipcodeId"
         {...register('zipcode', {
           required: 'This field is required',
           pattern: {

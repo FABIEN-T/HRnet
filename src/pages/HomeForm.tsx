@@ -2,16 +2,8 @@
 
 // import '../homeForm.css'
 import '../App.css'
-import {
-  lazy,
-  useState,
-  useMemo,
-  useCallback,
-  useEffect,
-  useContext,
-} from 'react'
+import { lazy, useState, useContext } from 'react'
 import { useForm, FormProvider } from 'react-hook-form'
-import { Modal } from 'fv-modal-react'
 
 import EmployeeContext from '../utilsContextProvider/EmployeeContextProvider'
 
@@ -41,6 +33,7 @@ export default function HomeForm() {
     handleSubmit,
     formState: { errors },
     watch,
+    reset,
   } = useForm({
     defaultValues,
     mode: 'onSubmit', // onChange | onBlur | onSubmit | onTouched | all
@@ -63,7 +56,15 @@ export default function HomeForm() {
       state: data.selectState.abbreviation,
       zipCode: data.zipcode,
     }
+    console.log('save employee', employee)
     addToEmployeesList(employee)
+    reset({
+      firstName: '',
+      lastName: '',
+      street: '',
+      city: '',
+      zipcode: null,
+    })
   }
 
   return (
@@ -90,7 +91,11 @@ export default function HomeForm() {
           <Address />
           <SelectDepartement />
           <div className="buttonDiv">
-            <button className="edit-button" onClick={handleSubmit(save)}>
+            <button
+              // type="reset"
+              className="edit-button"
+              onClick={handleSubmit(save)}
+            >
               Save
             </button>
           </div>

@@ -12,17 +12,19 @@ function DateStart() {
   return (
     <div className="inputContainer inputPadding">
       <div className="labelError">
-        <label htmlFor="dateStart">Start Date</label>
+        <label htmlFor="dateStartId">Start Date</label>
         <p className="inputError">{errors?.dateStart?.message}</p>
       </div>
       <Controller
         control={control}
         name="dateStart"
+        // id="dateStartId"
         rules={{ required: 'This field is required' }}
         render={({ field }) => (
           <DatePicker
             className="inputDate"
             name="dateStart"
+            id="dateStartId"
             selected={field.value}
             dateFormat="MM/dd/yyyy"
             onChange={field.onChange}

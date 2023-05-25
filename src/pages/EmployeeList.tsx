@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import React, { useContext, useMemo, useState, useEffect } from 'react'
+import { useContext, useMemo, useState } from 'react'
 import Header from '../components/Header'
 import FilterComponent from '../components/FilterComponent'
 
@@ -24,21 +24,10 @@ createTheme('pistachio', {
 
 export default function EmployeesList() {
   const { employees } = useContext(EmployeeContext)
-
   const [filterText, setFilterText] = useState('')
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false)
 
-  const getLocalStorage = localStorage.getItem('employees')
-    ? JSON.parse(localStorage.getItem('employees'))
-    : []
-  // console.log('Provider state 2', getLocalStorage)
-  const getLocalStorageLength =
-    getLocalStorage === null ? 0 : getLocalStorage.length
-  console.log('EmployeesList', getLocalStorage, getLocalStorageLength)
-  const result =
-    employees.length < getLocalStorageLength ? getLocalStorage : employees
-  // const filteredItems = JSON.parse(localStorage.getItem('employees')).filter(
-  const filteredItems = result.filter(
+  const filteredItems = employees.filter(
     (object) =>
       (object.firstName &&
         object.firstName.toLowerCase().includes(filterText.toLowerCase())) ||
