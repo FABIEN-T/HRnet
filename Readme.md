@@ -25,9 +25,9 @@ Link of the project repository with the jQuery library : https://github.com/Open
 
 ### 1/ Clone this repository
 
-### 2/ Install package : `npm install`
+### 2/ Install the dependencies : : `npm install`
 
-### 3/ Install the dependencies :
+### 3/ Launch the app :
 
 In the terminal, run the command : `yarn dev`
 
