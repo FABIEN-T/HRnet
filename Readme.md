@@ -1,4 +1,4 @@
-# Pass a jQuery app to React
+# HRnet : Pass a jQuery app to React
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -30,13 +30,14 @@ Link of the project repository with the jQuery library : https://github.com/Open
 ### 3/ Install the dependencies :
 
 In the terminal, run the command : `yarn dev`
+
 To view the app, click with the control key pressed on the Local link: http://127.0.0.1:51xx/
 
 NB : This app use `vite` as toolbox.
 
 ### 4/ Build and Preview :
 
-In the terminal, run the command :
+In the terminal, run the commands :
 
 `yarn build`
 
