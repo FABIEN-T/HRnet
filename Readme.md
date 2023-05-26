@@ -25,13 +25,13 @@ Link of the project repository with the jQuery library : https://github.com/Open
 
 ### 1/ Clone this repository
 
-### 2/ Install the dependencies : : `npm install`
+### 2/ Install the dependencies : `npm install`
 
 ### 3/ Launch the app :
 
 In the terminal, run the command : `yarn dev`
 
-To view the app, click with the control key pressed on the Local link: http://127.0.0.1:51xx/
+To view the app, click with the control key pressed on the Local link : http://127.0.0.1:51xx/
 
 NB : This app use `vite` as toolbox.
 
