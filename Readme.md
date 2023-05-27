@@ -11,7 +11,7 @@
 
 ## Presentation
 
-![SNAPSHOT](/src/assets/Snapshot_HRnet.jpg "Titre de l'image")
+![SNAPSHOT](/src/assets/Snapshot_HRnet.jpg 'Capture HRnet')
 
 This repository converts the application's jQuery library plugins into React components to gain performance and reliability.
 

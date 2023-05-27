@@ -1,71 +1,44 @@
 // @ts-nocheck
 
-import {
-  createContext,
-  useReducer,
-  useEffect,
-  useCallback,
-  useMemo,
-} from 'react'
+import { createContext, useReducer, useMemo, useEffect } from 'react'
 import employeeReducer from './employeeReducer'
 import initialState from './initialState'
-// import SwitchStateLocalStorage from './switchStateLocalStorage'
 
 const EmployeeContext = createContext(null)
 export default EmployeeContext
 
-// Conception du Provider
+// Provider Design
 export const EmployeeProvider = ({ children }) => {
   const [state, dispatch] = useReducer(employeeReducer, initialState)
 
-  const addToEmployeesList = useCallback((employee) => {
-    dispatch({
-      type: 'CREATE_EMPLOYEE',
-      payload: employee,
-    })
-  }, [])
-
-  const refresh = useCallback(() => {
-    dispatch({
-      type: 'REFRESH',
-    })
-  }, [])
-
-  // valeur stockée dans le contexte
+  // Values stored in context
   const contextValue = useMemo(() => ({
-    employees: state.employees,
-    addToEmployeesList,
-    refresh,
+    state,
+    dispatch,
   }))
 
+  console.log('state.employees', state.employees)
+
+  // Local storage management
   const getLocalStorage =
-    localStorage.getItem('employees') !== undefined ||
+    localStorage.getItem('employees') === undefined ||
     localStorage.getItem('employees') === null
-      ? JSON.parse(localStorage.getItem('employees'))
-      : []
+      ? []
+      : JSON.parse(localStorage.getItem('employees'))
   const getLocalStorageLength =
-    getLocalStorage === null ? 0 : getLocalStorage.length
+    getLocalStorage === [null] ? 0 : getLocalStorage.length
 
   useEffect(() => {
-    if (contextValue.employees.length >= getLocalStorageLength) {
-      localStorage.setItem('employees', JSON.stringify(contextValue.employees))
-      console.log(
-        'Provider employees >=',
-        contextValue.employees.length,
-        getLocalStorageLength,
-        contextValue.employees
-      )
+    // Add new employee in local storage
+    if (state.employees.length >= getLocalStorageLength) {
+      localStorage.setItem('employees', JSON.stringify(state.employees))
     }
-    if (contextValue.employees.length < getLocalStorageLength) {
-      refresh()
-      console.log(
-        'Provider employees <',
-        contextValue.employees.length,
-        JSON.parse(localStorage.getItem('employees')).length,
-        contextValue.employees
-      )
+    // Put the contents of local storage in the state when refreshing the browser
+    if (state.employees.length < getLocalStorageLength) {
+      dispatch({
+        type: 'REFRESH',
+      })
     }
-    // localStorage.setItem('employees', JSON.stringify(result))
   })
 
   return (

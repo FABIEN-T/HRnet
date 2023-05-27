@@ -8,7 +8,7 @@ function SelectDepartement() {
   const {
     control,
     formState: { errors },
-  } = useFormContext() // retrieve hook methods
+  } = useFormContext() // Retrieve hook methods from the <FormProvider />
   return (
     <div className="inputContainer inputPadding">
       <div className="labelError">
@@ -18,10 +18,9 @@ function SelectDepartement() {
       <Controller
         control={control}
         name="selectDepartement"
-        // id="selectDepartementId"
         rules={{ required: 'This field is required' }}
         render={({ field }) => (
-          <Select
+          <Select // Component of the 'react-select' librairie
             className="input"
             name="selectDepartement"
             id="selectDepartementId"

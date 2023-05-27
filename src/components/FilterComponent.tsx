@@ -1,5 +1,7 @@
 // @ts-nocheck
+
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const TextField = styled.input`
   height: 32px;
@@ -41,12 +43,11 @@ const ClearButton = styled.button`
   }
 `
 
-const FilterComponent = ({ filterText, onFilter, onClear }) => (
+const FilterComponent = ({ onFilter, onClear, filterText }) => (
   <>
     <TextField
       id="search"
       type="text"
-      // placeholder="Filter By Name"
       aria-label="Search Input"
       value={filterText}
       onChange={onFilter}
@@ -58,3 +59,9 @@ const FilterComponent = ({ filterText, onFilter, onClear }) => (
 )
 
 export default FilterComponent
+
+FilterComponent.propTypes = {
+  onFilter: PropTypes.string,
+  onClear: PropTypes.func,
+  filterText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+}

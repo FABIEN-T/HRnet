@@ -1,3 +1,18 @@
+:root {
+  --rowA-bg-color: #f4f6ef;
+  --rowB-bg-color: #eaede0;
+  --cross-close-bg-color: #2b3603;
+  --green0: #576c05;
+  --green1: #6e8510;
+  --green2: #93ad18;
+}
+
+body {
+  font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  background-color: var(--rowA-bg-color);
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -6,20 +21,11 @@
   padding: 0;
 }
 
-/*
-#93ad18
-#6e8510
-#576c05	 
-#eaede0 
-#f4f6ef
-*/
-
 /* HEADER */
 .logoTitle {
   display: flex;
   justify-content: center;
   flex-direction: row;
-  /* box-sizing: border-box; */
   margin: 0 auto 2px;
   padding: 11px 6px 9px 14px;
   border: #576c05 solid 2px;
@@ -29,8 +35,6 @@
 }
 
 img {
-  /* display: block;
-  margin: 0; */
   width: 92;
   height: 120px;
 }
@@ -51,16 +55,14 @@ img {
   margin: 0 auto;
   padding: 6px 16px;
   width: fit-content;
-  /* border: #576c05 solid 2px; */
   border-radius: 10px;
   font-weight: 500;
   color: #576c05;
-  /* text-decoration: none; */
   text-align: center;
 }
 
 .link:hover {
-  color: #93ad18;
+  color: var(--green2);
 }
 
 h2 {
@@ -68,17 +70,16 @@ h2 {
   padding: 5px;
   text-align: center;
   border-radius: 15px;
-  background-color: #6e8510;
+  background-color: var(--green1);
   color: white;
   max-width: 280px;
 }
 
+/* PAGE HOMEFORM */
 .createEmployee {
   box-sizing: border-box;
   margin: 0 auto;
   padding: 20px;
-  /* background-color: #f2f6eb; */
-  /* background-color: #eaede0; */
   width: 320px;
 }
 
@@ -119,7 +120,7 @@ label {
 fieldset {
   margin: 16px 0 0;
   padding: 0px 0px 10px;
-  border: 2px #6e8510 solid;
+  border: 2px var(--green1) solid;
   border-radius: 10px;
 }
 
@@ -145,7 +146,7 @@ legend {
 
 .edit-button:hover {
   color: white;
-  background-color: #93ad18;
+  background-color: var(--green2);
 }
 
 /* EMPLOYEE LIST */
@@ -155,17 +156,46 @@ legend {
   width: 90%;
 }
 
-/* .GcSkG, */
 .sc-iVCKna {
-  /* color: black; */
   white-space: normal;
 }
 
 .rdt_TableRow:nth-child(2n + 1) {
-  background-color: #eaede0;
-  /* color: black; */
+  background-color: var(--rowB-bg-color);
 }
 
 .rdt_TableRow:nth-child(2n) {
-  background-color: #f4f6ef;
+  background-color: var(--rowA-bg-color);
+}
+
+/* PAGE ERROR */
+.mainError {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.titleError {
+  color: var(--green0);
+  margin: 15% auto 5%;
+  padding: 20px;
+  color: white;
+  font-size: 120px;
+  font-weight: 700;
+}
+
+.paragraphError {
+  margin: 0 auto 3%;
+  color: black;
+  font-size: 50px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.linkError {
+  display: block;
+  margin: 0 auto;
+  color: var(--green0);
+  font-size: 22px;
+  font-weight: 700;
 }

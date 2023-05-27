@@ -6,7 +6,7 @@ function City() {
   const {
     register,
     formState: { errors },
-  } = useFormContext() // retrieve hook methods
+  } = useFormContext() // Retrieve hook methods from the <FormProvider />
 
   return (
     <div className="inputContainer">
@@ -18,9 +18,10 @@ function City() {
       </div>
 
       <input
-        // name="city"
+        name="city"
         id="cityId"
         {...register('city', {
+          // Validation rules
           minLength: { value: 2, message: '2<Length<30' },
           maxLength: { value: 30, message: '2<Length<30' },
           required: 'This field is required',

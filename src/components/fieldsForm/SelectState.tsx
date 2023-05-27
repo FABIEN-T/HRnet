@@ -8,7 +8,7 @@ function SelectState() {
   const {
     control,
     formState: { errors },
-  } = useFormContext() // retrieve hook methods
+  } = useFormContext() // Retrieve hook methods from the <FormProvider />
   return (
     <div className="inputContainer">
       <div className="labelError">
@@ -19,13 +19,12 @@ function SelectState() {
       <Controller
         control={control}
         name="selectState"
-        id="selectStateId"
         rules={{ required: 'This field is required' }}
         render={({ field }) => (
-          <Select
+          <Select // Component of the 'react-select' librairie
             className="input"
             name="selectState"
-            // id="selectStateId"
+            id="selectStateId"
             defaultValue={null}
             selected={field.value}
             onChange={field.onChange}

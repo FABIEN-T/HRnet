@@ -1,15 +1,15 @@
 // @ts-nocheck
 
 import { useContext, useMemo, useState } from 'react'
+import EmployeeContext from '../utilsContextProvider/EmployeeContextProvider'
+
 import Header from '../components/Header'
 import FilterComponent from '../components/FilterComponent'
 
 import { columns, customStyles } from '../utilsDataTable/utilsDataTable'
 import DataTable, { createTheme } from 'react-data-table-component'
 
-// import './homeForm.css'
 import '../App.css'
-import EmployeeContext from '../utilsContextProvider/EmployeeContextProvider'
 
 createTheme('pistachio', {
   text: {
@@ -23,11 +23,11 @@ createTheme('pistachio', {
 })
 
 export default function EmployeesList() {
-  const { employees } = useContext(EmployeeContext)
+  const { state } = useContext(EmployeeContext)
   const [filterText, setFilterText] = useState('')
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false)
 
-  const filteredItems = employees.filter(
+  const filteredItems = state.employees.filter(
     (object) =>
       (object.firstName &&
         object.firstName.toLowerCase().includes(filterText.toLowerCase())) ||

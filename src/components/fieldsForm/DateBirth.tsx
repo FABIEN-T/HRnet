@@ -8,7 +8,7 @@ function DateBirth() {
   const {
     control,
     formState: { errors },
-  } = useFormContext() // retrieve hook methods
+  } = useFormContext() // Retrieve hook methods from the <FormProvider />
   return (
     <div className="inputContainer inputPadding">
       <div className="labelError">
@@ -18,10 +18,9 @@ function DateBirth() {
       <Controller
         control={control}
         name="dateBirth"
-        // id="dateBirthId"
         rules={{ required: 'This field is required' }}
         render={({ field }) => (
-          <DatePicker
+          <DatePicker // Component of the 'react-datepicker' librairie
             className="inputDate"
             name="dateBirth"
             id="dateBirthId"

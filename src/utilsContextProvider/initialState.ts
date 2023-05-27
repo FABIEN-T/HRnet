@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-
+// The initial state for the useReducer "employeeReducer"
 const initialState = {
     employees: [
       {

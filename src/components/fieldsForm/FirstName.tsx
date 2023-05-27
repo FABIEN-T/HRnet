@@ -6,7 +6,7 @@ function FirstName() {
   const {
     register,
     formState: { errors },
-  } = useFormContext() // retrieve hook methods
+  } = useFormContext() // Retrieve hook methods from the <FormProvider />
 
   return (
     <div className="inputContainer inputPadding">
@@ -15,9 +15,10 @@ function FirstName() {
         <p className="inputError">{errors.firstName?.message}</p>
       </div>
       <input
-        // name="firstName"
+        name="firstName"
         id="firstNameId"
         {...register('firstName', {
+          // Validation rules
           minLength: { value: 2, message: '2<Length<20' },
           maxLength: { value: 20, message: '2<Length<20' },
           required: 'This field is required',

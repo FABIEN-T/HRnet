@@ -6,7 +6,7 @@ function Street() {
   const {
     register,
     formState: { errors },
-  } = useFormContext() // retrieve hook methods
+  } = useFormContext() // Retrieve hook methods from the <FormProvider />
 
   return (
     <div className="inputContainer">
@@ -15,9 +15,10 @@ function Street() {
         <p className="inputError">{errors.street?.message}</p>
       </div>
       <input
-        // name="street"
+        name="street"
         id="streetId"
         {...register('street', {
+          // Validation rules
           maxLength: { value: 100, message: 'max : 100 characters' },
           required: 'This field is required',
           pattern: {

@@ -1,16 +1,23 @@
+// @ts-nocheck
+
+import PropTypes from 'prop-types'
 import { Modal } from 'fv-modal-react'
 
-export default function MyModal({ setIsOpen, tempFirstName, tempLastName }) {
+export default function CustomModal({
+  setIsOpen,
+  tempFirstName,
+  tempLastName,
+}) {
   return (
     <Modal
       setIsOpen={setIsOpen}
       text={tempFirstName + ' ' + tempLastName + ' is saved.'}
       // Custom the background of the modal
-      modalBgColor={'#576c05'}
+      modalBgColor={'var(--green0)'}
       modalBorder={'3px solid white'}
       modalBorderRadius={'20px'}
       // Custom the closing cross
-      crossCloseBg={'#2b3603'}
+      crossCloseBg={'var(--cross-close-bg-color)'}
       crossCloseColor={'white'}
       crossCloseBorder={'3px solid white'}
       // Custom the font
@@ -20,4 +27,10 @@ export default function MyModal({ setIsOpen, tempFirstName, tempLastName }) {
       textAlign={'left'}
     />
   )
+}
+
+CustomModal.propTypes = {
+  setIsOpen: PropTypes.func,
+  tempFirstName: PropTypes.string,
+  tempLastName: PropTypes.string,
 }
