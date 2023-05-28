@@ -15,7 +15,7 @@ function DateBirth() {
         <label htmlFor="dateBirthId">Date of Birth</label>
         <p className="inputError">{errors?.dateBirth?.message}</p>
       </div>
-      <Controller
+      <Controller // Component of the 'react-hook-form' librairie
         control={control}
         name="dateBirth"
         rules={{ required: 'This field is required' }}

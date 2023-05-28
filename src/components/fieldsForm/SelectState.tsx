@@ -16,7 +16,7 @@ function SelectState() {
         <p className="inputError">{errors?.selectState?.message}</p>
       </div>
 
-      <Controller
+      <Controller // Component of the 'react-hook-form' librairie
         control={control}
         name="selectState"
         rules={{ required: 'This field is required' }}

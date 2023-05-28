@@ -15,7 +15,7 @@ function DateStart() {
         <label htmlFor="dateStartId">Start Date</label>
         <p className="inputError">{errors?.dateStart?.message}</p>
       </div>
-      <Controller
+      <Controller // Component of the 'react-hook-form' librairie
         control={control}
         name="dateStart"
         rules={{ required: 'This field is required' }}

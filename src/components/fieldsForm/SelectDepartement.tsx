@@ -15,7 +15,7 @@ function SelectDepartement() {
         <label htmlFor="selectDepartementId">Departement</label>
         <p className="inputError">{errors.selectDepartement?.message}</p>
       </div>
-      <Controller
+      <Controller // Component of the 'react-hook-form' librairie
         control={control}
         name="selectDepartement"
         rules={{ required: 'This field is required' }}

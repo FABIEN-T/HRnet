@@ -43,25 +43,26 @@ const ClearButton = styled.button`
   }
 `
 
-const FilterComponent = ({ onFilter, onClear, filterText }) => (
-  <>
-    <TextField
-      id="search"
-      type="text"
-      aria-label="Search Input"
-      value={filterText}
-      onChange={onFilter}
-    />
-    <ClearButton type="button" onClick={onClear}>
-      X
-    </ClearButton>
-  </>
-)
-
-export default FilterComponent
+// Search Input
+export default function FilterComponent({ onFilter, onClear, filterText }) {
+  return (
+    <>
+      <TextField
+        id="search"
+        type="text"
+        aria-label="Search Input"
+        value={filterText}
+        onChange={onFilter}
+      />
+      <ClearButton type="button" onClick={onClear}>
+        X
+      </ClearButton>
+    </>
+  )
+}
 
 FilterComponent.propTypes = {
-  onFilter: PropTypes.string,
+  onFilter: PropTypes.func,
   onClear: PropTypes.func,
   filterText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 }

@@ -2,24 +2,24 @@
 
 import { useContext, useMemo, useState } from 'react'
 import EmployeeContext from '../utilsContextProvider/EmployeeContextProvider'
+import DataTable, { createTheme } from 'react-data-table-component'
+import { columns, customStyles } from '../utilsDataTable/utilsDataTable'
 
 import Header from '../components/Header'
 import FilterComponent from '../components/FilterComponent'
-
-import { columns, customStyles } from '../utilsDataTable/utilsDataTable'
-import DataTable, { createTheme } from 'react-data-table-component'
+import { filteredItems } from '../utilsDataTable/filteredItems'
 
 import '../App.css'
 
+// Function from react-data-table-component librairie to customize the theme
 createTheme('pistachio', {
   text: {
     primary: 'black',
-    secondary: 'black',
+    secondary: 'var(--green0)',
   },
   background: {
-    default: '#f4f6ef',
+    default: 'var(--rowA-bg-color)',
   },
-  striped: true,
 })
 
 export default function EmployeesList() {
@@ -27,24 +27,10 @@ export default function EmployeesList() {
   const [filterText, setFilterText] = useState('')
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false)
 
-  const filteredItems = state.employees.filter(
-    (object) =>
-      (object.firstName &&
-        object.firstName.toLowerCase().includes(filterText.toLowerCase())) ||
-      (object.lastName &&
-        object.lastName.toLowerCase().includes(filterText.toLowerCase())) ||
-      (object.startDate && object.startDate.includes(filterText)) ||
-      (object.department &&
-        object.department.toLowerCase().includes(filterText.toLowerCase())) ||
-      (object.dateOfBirth && object.dateOfBirth.includes(filterText)) ||
-      (object.street && object.street.includes(filterText)) ||
-      (object.city &&
-        object.city.toLowerCase().includes(filterText.toLowerCase())) ||
-      (object.state &&
-        object.state.toLowerCase().includes(filterText.toLowerCase())) ||
-      (object.zipCode && object.zipCode.includes(filterText))
-  )
+  // Filtering of an employee by first name, last name, address etc...
+  const filteredItemsResult = filteredItems(state.employees, filterText)
 
+  // Manage search input (filtering) and pagination reset
   const subHeaderComponentMemo = useMemo(() => {
     const handleClear = () => {
       if (filterText) {
@@ -52,8 +38,8 @@ export default function EmployeesList() {
         setFilterText('')
       }
     }
-
     return (
+      // Search Input
       <FilterComponent
         onFilter={(e) => setFilterText(e.target.value)}
         onClear={handleClear}
@@ -66,14 +52,14 @@ export default function EmployeesList() {
     <div className="currentEmployees">
       <Header link="/" nameLink="Home" title="Current Employees" />
       <DataTable
-        columns={columns}
-        customStyles={customStyles}
-        data={filteredItems}
-        pagination
-        paginationResetDefaultPage={resetPaginationToggle} // optionally, a hook to reset pagination to page 1
-        subHeader
-        subHeaderComponent={subHeaderComponentMemo}
-        persistTableHead
+        columns={columns} // Configure columns
+        customStyles={customStyles} // Configure the styles of rows, columns...
+        data={filteredItemsResult} // Employees to display based on filtering
+        pagination // Display the pagination
+        paginationResetDefaultPage={resetPaginationToggle} // To reset pagination to page 1
+        subHeader // Display the input search
+        subHeaderComponent={subHeaderComponentMemo} // Clear input search and reset pagination
+        persistTableHead // Show the table head (columns) even when progressPending is true.
         theme="pistachio"
       />
     </div>

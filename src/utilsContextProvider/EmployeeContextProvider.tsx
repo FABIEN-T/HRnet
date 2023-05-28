@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import { createContext, useReducer, useMemo, useEffect } from 'react'
+import { createContext, useReducer, useMemo } from 'react'
 import employeeReducer from './employeeReducer'
 import initialState from './initialState'
 
@@ -26,20 +26,18 @@ export const EmployeeProvider = ({ children }) => {
       ? []
       : JSON.parse(localStorage.getItem('employees'))
   const getLocalStorageLength =
-    getLocalStorage === [null] ? 0 : getLocalStorage.length
+    getLocalStorage == [] ? 0 : getLocalStorage.length
 
-  useEffect(() => {
-    // Add new employee in local storage
-    if (state.employees.length >= getLocalStorageLength) {
-      localStorage.setItem('employees', JSON.stringify(state.employees))
-    }
-    // Put the contents of local storage in the state when refreshing the browser
-    if (state.employees.length < getLocalStorageLength) {
-      dispatch({
-        type: 'REFRESH',
-      })
-    }
-  })
+  // Add new employee in local storage
+  if (state.employees.length >= getLocalStorageLength) {
+    localStorage.setItem('employees', JSON.stringify(state.employees))
+  }
+  // Put the contents of local storage in the state when refreshing the browser
+  if (state.employees.length < getLocalStorageLength) {
+    dispatch({
+      type: 'REFRESH',
+    })
+  }
 
   return (
     <EmployeeContext.Provider value={contextValue}>
