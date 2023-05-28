@@ -67,6 +67,8 @@ In the terminal, run the commands :
 
 ![GitHub package.json dependencies (dev)](https://img.shields.io/github/package-json/dependency-version/FABIEN-T/P14_HRnet/react?label=REACT&logo=react&logoColor=61DAFB&color=303540&style=flat-square)
 
+![GitHub package.json dependency version (dev)](https://img.shields.io/github/package-json/dependency-version/FABIEN-T/P14_HRnet/react-router-dom?label=React-router-dom&color=303540&style=flat-square)
+
 <!-- ![GitHub package.json dependencies (dev)](https://img.shields.io/github/package-json/dependency-version/FABIEN-T/P14_HRnet/react-dom?label=REACT-DOM&logo=react&logoColor=61DAFB&color=303540&style=flat-square) -->
 
 ![GitHub package.json dependencies (dev)](https://img.shields.io/github/package-json/dependency-version/FABIEN-T/P14-modal-react/styled-components?label=Styled-Components&logo=styled-components&logoColor=b758ad&color=b758ad&style=flat-square)

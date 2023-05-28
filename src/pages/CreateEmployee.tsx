@@ -18,7 +18,7 @@ import CustomModal from '../components/CustomModal'
 let tempFirstName = ''
 let tempLastName = ''
 
-export default function HomeForm() {
+export default function CreateEmployee() {
   const [isOpen, setIsOpen] = useState(false) // isOpen manages the state of the modal
   const { dispatch } = useContext(EmployeeContext)
 

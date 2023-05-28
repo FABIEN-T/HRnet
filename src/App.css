@@ -16,7 +16,6 @@ body {
 .App {
   display: flex;
   flex-direction: column;
-  /* position: relative; */
   margin: 0;
   padding: 0;
 }
@@ -95,7 +94,7 @@ h2 {
 }
 
 .inputDate {
-  width: 248px;
+  width: 242px;
 }
 
 label {
