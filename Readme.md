@@ -13,6 +13,8 @@
 
 ![SNAPSHOT](/src/assets/Snapshot_HRnet.jpg 'Capture HRnet')
 
+HRnet is an internal WealthHealth web application that manages employee records.
+
 This repository converts the application's jQuery library plugins into React components to gain performance and reliability.
 
 Instead of the 4 jQuery plugins, the application uses React components imported from existing libraries, except for the Modal package which was created for this occasion.
