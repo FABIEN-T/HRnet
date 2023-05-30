@@ -91,4 +91,12 @@ In the terminal, run the commands :
 
 ![Prettier](https://img.shields.io/badge/Prettier-^2.8.8-blue?style=flat-square)
 
+![Typescript](https://img.shields.io/badge/Typescript-%5E5.0.4-blue)
+
 ![Vite](https://img.shields.io/badge/Vite-^4.3.5-blue?style=flat-square)
+
+![Vitest](https://img.shields.io/badge/Vitest-%5E0.31.0-blue)
+
+![JSdom](https://img.shields.io/badge/JSdom-%5E22.0.0-blue)
+
+![Eslint](https://img.shields.io/badge/Eslint-%5E8.2.0-blue)
